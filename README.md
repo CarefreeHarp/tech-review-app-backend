@@ -53,6 +53,7 @@ src/
 └── models/
     ├── Article.js         # Modelo articles
     ├── Review.js          # Modelo reviews
+    ├── ReviewLike.js      # Modelo review_likes
     └── User.js            # Modelo users
 Makefile
 package.json
@@ -63,6 +64,7 @@ package-lock.json
 
 - **Articles:** productos con nombre, modelo, descripción, imagen, fecha de lanzamiento y estado. `category_id`, `brand_id` y `specifications` son strings; categoría y marca no son claves foráneas.
 - **Reviews:** reseñas con calificación, título, contenido y estado. Conserva las claves foráneas `user_id` hacia `users.id` y `article_id` hacia `articles.id`.
+- **Review likes:** registros de likes de reseñas con `user_id` opcional y `review_id` obligatorio. Las relaciones aún no están configuradas.
 - **Users:** usuarios con email y username únicos, biografía, imagen de perfil, fecha de consulta de notificaciones y estado. No incluye `firebase_uid`.
 
-Los tres modelos tienen un ID entero autoincremental y timestamps `created_at` y `updated_at` gestionados por Sequelize.
+Los cuatro modelos tienen un ID entero autoincremental y timestamps `createdAt` y `updatedAt` gestionados por Sequelize.

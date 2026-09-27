@@ -4,6 +4,8 @@ import "./models/Article.js";
 import "./models/User.js";
 import "./models/Review.js";
 import "./models/ReviewLike.js";
+import { initializeData } from "./database/seed.js";
+
 
 async function init() {
   try {
@@ -17,6 +19,7 @@ async function init() {
       });
 
     await sequelize.sync({ force: false });
+    await initializeData();
   } catch (error) {
     console.log("Error starting the server:", error);
   }

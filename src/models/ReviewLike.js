@@ -20,6 +20,6 @@ export const ReviewLike = sequelize.define(
     },
   },
   {
-    timestamps: true,
+    timestamps: false,
   },
 );

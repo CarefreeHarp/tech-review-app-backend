@@ -1,6 +1,9 @@
 import app from "./app.js";
 import { sequelize } from "./database/database.js";
-import { initializeData } from "./database/seed.js";
+import { initializeUsers } from "./database/initUsers.js";
+import { initializeArticles } from "./database/initArticles.js";
+import { initializeReviews } from "./database/initReviews.js";
+import { initializeReviewLikes } from "./database/initReviewLikes.js";
 import { setupRelations } from "./models/relations.js";
 import "./models/Article.js";
 import "./models/User.js";
@@ -14,7 +17,10 @@ async function init() {
 
     setupRelations();
     await sequelize.sync({ force: false });
-    await initializeData();
+    await initializeUsers();
+    await initializeArticles();
+    await initializeReviews();
+    await initializeReviewLikes();
 
     app.listen(3000, () => {
       console.log("Server is running on port 3000");

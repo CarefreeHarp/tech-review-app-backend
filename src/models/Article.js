@@ -48,5 +48,6 @@ export const Article = sequelize.define(
   },
   {
     timestamps: true,
+    underscored: true,
   },
 );

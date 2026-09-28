@@ -46,5 +46,6 @@ export const Review = sequelize.define(
   },
   {
     timestamps: true,
+    underscored: true,
   },
 );

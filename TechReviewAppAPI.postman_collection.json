@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "88f4a10b-2f5c-4e3a-92d4-36fe730d4d6b",
+		"name": "Devicers",
+		"description": "Colección para probar todas las rutas expuestas por el backend. Inicia el servidor y configura userId y articleId con registros existentes. Ejecuta Crear reseña antes de Actualizar o Eliminar reseña: la respuesta guarda automáticamente el id en reviewId. Eliminar reseña borra ese registro de la base de datos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49418216"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Obtener usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/{{userId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							]
+						},
+						"description": "Devuelve el usuario y sus reseñas, incluyendo el artículo asociado a cada una."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Artículos",
+			"item": [
+				{
+					"name": "Listar artículos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/articles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"articles"
+							]
+						},
+						"description": "Devuelve todos los artículos con sus reseñas y el usuario autor de cada reseña."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener artículo por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/articles/{{articleId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"articles",
+								"{{articleId}}"
+							]
+						},
+						"description": "Devuelve un artículo con sus reseñas y usuarios asociados."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reseñas",
+			"item": [
+				{
+					"name": "Crear reseña",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"La reseña se crea correctamente\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									"",
+									"if (pm.response.code === 201) {",
+									"  const review = pm.response.json();",
+									"  if (review.id != null) {",
+									"    pm.collectionVariables.set(\"reviewId\", String(review.id));",
+									"  }",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"rating\": 5,\n  \"title\": \"Excelente producto\",\n  \"body\": \"Buena relación entre rendimiento, pantalla y batería.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/{{userId}}/articles/{{articleId}}/reviews",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}",
+								"articles",
+								"{{articleId}}",
+								"reviews"
+							]
+						},
+						"description": "rating debe ser un entero entre 1 y 5; body es obligatorio. Al responder 201, guarda el id de la nueva reseña en reviewId."
+					},
+					"response": []
+				},
+				{
+					"name": "Listar reseñas de un artículo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/articles/{{articleId}}/reviews",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"articles",
+								"{{articleId}}",
+								"reviews"
+							]
+						},
+						"description": "Devuelve las reseñas del artículo, ordenadas desde la más reciente."
+					},
+					"response": []
+				},
+				{
+					"name": "Listar reseñas de un usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/{{userId}}/reviews",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}",
+								"reviews"
+							]
+						},
+						"description": "Devuelve las reseñas del usuario, ordenadas desde la más reciente."
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar reseña",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"rating\": 4,\n  \"title\": \"Excelente producto tras varias semanas\",\n  \"body\": \"La batería sigue rindiendo bien; ajusté mi valoración después de usarlo más tiempo.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/reviews/{{reviewId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews",
+								"{{reviewId}}"
+							]
+						},
+						"description": "Actualiza los campos enviados en el cuerpo de una reseña existente."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar reseña",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reviews/{{reviewId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews",
+								"{{reviewId}}"
+							]
+						},
+						"description": "Elimina la reseña indicada. La respuesta correcta es 204 sin cuerpo."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "userId",
+			"value": "1"
+		},
+		{
+			"key": "articleId",
+			"value": "1"
+		},
+		{
+			"key": "reviewId",
+			"value": ""
+		}
+	]
+}

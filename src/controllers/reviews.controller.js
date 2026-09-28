@@ -1,155 +1,128 @@
+import { Article } from "../models/Article.js";
 import { Review } from "../models/Review.js";
 import { User } from "../models/User.js";
-import { Article } from "../models/Article.js";
 
-export const createReview = async(req,res)=>{
+export const createReview = async (req, res) => {
+  try {
+    const { userId, articleId } = req.params;
+    const { rating, title, body } = req.body;
 
-    try{
-
-        const review = await Review.create(req.body);
-        const newReview = await Review.findByPk(review.id,{
-            include:[
-                {
-                    model:User,
-                    as:"user"
-                },
-                {
-                    model:Article,
-                    as:"article"
-                }
-            ]
-        });
-
-        res.status(201).json(newReview);
-
-    }catch(error){
-        res.status(500).json({
-            message:error.message
-        });
+    // La calificación se maneja como estrellas de 1 a 5.
+    if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+      return res
+        .status(400)
+        .json({ message: "Selecciona una calificación de 1 a 5 estrellas." });
     }
+
+    if (!body) {
+      return res.status(400).json({ message: "Escribe el contenido de tu reseña." });
+    }
+
+    // Se valida la existencia de ambos registros antes de crear la reseña.
+    const user = await User.findByPk(userId);
+    if (!user) {
+      return res.status(404).json({ message: "No encontramos este usuario." });
+    }
+
+    const article = await Article.findByPk(articleId);
+    if (!article) {
+      return res.status(404).json({ message: "No encontramos este artículo." });
+    }
+
+    const review = await Review.create({
+      user_id: user.id,
+      article_id: article.id,
+      rating,
+      title,
+      body,
+      is_active: true,
+    });
+
+    return res.status(201).json(review);
+  } catch (error) {
+    console.log("Error creating review:", error);
+    return res
+      .status(500)
+      .json({ message: "No pudimos publicar tu reseña. Intenta de nuevo más tarde." });
+  }
 };
 
-export const getReviewsByArticle = async(req,res)=>{
-
-    try{
-
-        const {id}=req.params;
-        const reviews = await Review.findAll({
-            where:{
-                article_id:id
-            },
-            include:[
-                {
-                    model:User,
-                    as:"user"
-                },
-                {
-                    model:Article,
-                    as:"article"
-                }
-            ]
-        });
-
-        res.json(reviews);
-
-    }catch(error){
-        res.status(500).json({
-            message:error.message
-        });
+export const getReviewsByArticle = async (req, res) => {
+  try {
+    const article = await Article.findByPk(req.params.articleId);
+    if (!article) {
+      return res.status(404).json({ message: "No encontramos este artículo." });
     }
+
+    const reviews = await Review.findAll({
+      where: { article_id: article.id },
+      order: [["createdAt", "DESC"]],
+    });
+
+    return res.json(reviews);
+  } catch (error) {
+    console.log("Error getting article reviews:", error);
+    return res
+      .status(500)
+      .json({ message: "No pudimos cargar las reseñas. Intenta de nuevo más tarde." });
+  }
 };
 
-export const getReviewsByUser = async(req,res)=>{
-
-    try{
-
-        const {id}=req.params;
-        const reviews = await Review.findAll({
-            where:{
-                user_id:id
-            },
-            include:[
-                {
-                    model:Article,
-                    as:"article"
-                }
-            ]
-        });
-
-        res.json(reviews);
-
-    }catch(error){
-        res.status(500).json({
-            message:error.message
-        });
+export const getReviewsByUser = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.userId);
+    if (!user) {
+      return res.status(404).json({ message: "No encontramos este usuario." });
     }
+
+    const reviews = await Review.findAll({
+      where: { user_id: user.id },
+      order: [["createdAt", "DESC"]],
+    });
+
+    return res.json(reviews);
+  } catch (error) {
+    console.log("Error getting user reviews:", error);
+    return res
+      .status(500)
+      .json({ message: "No pudimos cargar las reseñas. Intenta de nuevo más tarde." });
+  }
 };
 
-export const deleteReview = async(req,res)=>{
+export const updateReview = async (req, res) => {
+  try {
+    const review = await Review.findByPk(req.params.id);
 
-    try{
-        const {id}=req.params;
-        const deleted = await Review.destroy({
-            where:{
-                id
-            }
-        });
-
-        if(!deleted){
-            return res.status(404).json({
-                message:"Review not found"
-            });
-        }
-
-        res.json({
-            message:"Review deleted"
-        });
-
-    }catch(error){
-        res.status(500).json({
-            message:error.message
-        });
+    if (!review) {
+      return res.status(404).json({ message: "No encontramos esta reseña." });
     }
+
+    await review.update(req.body);
+
+    return res.json(review);
+  } catch (error) {
+    console.log("Error updating review:", error);
+    return res
+      .status(500)
+      .json({ message: "No pudimos actualizar la reseña. Intenta de nuevo más tarde." });
+  }
 };
 
-export const updateReview = async(req,res)=>{
+export const deleteReview = async (req, res) => {
+  try {
+    const review = await Review.findByPk(req.params.id);
 
-    try{
-
-        const {id}=req.params;
-        const [updated] = await Review.update(
-            req.body,
-            {
-                where:{
-                    id
-                }
-            }
-        );
-
-        if(!updated){
-            return res.status(404).json({
-                message:"Review not found"
-            });
-        }
-
-        const review = await Review.findByPk(id,{
-            include:[
-                {
-                    model:User,
-                    as:"user"
-                },
-                {
-                    model:Article,
-                    as:"article"
-                }
-            ]
-        });
-
-        res.json(review);
-
-    }catch(error){
-        res.status(500).json({
-            message:error.message
-        });
+    if (!review) {
+      return res.status(404).json({ message: "No encontramos esta reseña." });
     }
+
+    await review.destroy();
+
+    return res.sendStatus(204);
+  } catch (error) {
+    console.log("Error deleting review:", error);
+    return res
+      .status(500)
+      .json({ message: "No pudimos eliminar la reseña. Intenta de nuevo más tarde." });
+  }
 };

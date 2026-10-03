@@ -1,61 +1,61 @@
 import { User } from "./User.js";
+import { Category } from "./Category.js";
+import { Brand } from "./Brand.js";
+import { Store } from "./Store.js";
 import { Article } from "./Article.js";
 import { Review } from "./Review.js";
+import { Comment } from "./Comment.js";
 import { ReviewLike } from "./ReviewLike.js";
+import { CommentLike } from "./CommentLike.js";
+import { Follow } from "./Follow.js";
+import { ArticleStore } from "./ArticleStore.js";
+import { ReviewBookmark } from "./ReviewBookmark.js";
+import { Notification } from "./Notification.js";
 
-
+/** Configura las relaciones del diagrama antes de sincronizar y consultar los modelos. */
 export function setupRelations() {
-
-
-    // USER - REVIEW es una relacion 1:N
-    User.hasMany(Review, {
-        foreignKey: "user_id",
-        as: "reviews",
-        onDelete: "CASCADE"
-    });
-
-    Review.belongsTo(User, {
-        foreignKey: "user_id",
-        as: "user"
-    });
-
-
-    // ARTICLE - REVIEW es una relacion 1:N
-    Article.hasMany(Review, {
-        foreignKey: "article_id",
-        as: "reviews",
-        onDelete: "CASCADE"
-    });
-
-    Review.belongsTo(Article, {
-        foreignKey: "article_id",
-        as: "article"
-    });
-
-
-    // USER - REVIEWLIKE es una relacion 1:N
-    User.hasMany(ReviewLike, {
-        foreignKey: "user_id",
-        as: "reviewLikes",
-        onDelete: "CASCADE"
-    });
-
-    ReviewLike.belongsTo(User, {
-        foreignKey: "user_id",
-        as: "user"
-    });
-
-
-    // REVIEW - REVIEWLIKE es una relacion 1:N
-    Review.hasMany(ReviewLike, {
-        foreignKey: "review_id",
-        as: "likes",
-        onDelete: "CASCADE"
-    });
-
-    ReviewLike.belongsTo(Review, {
-        foreignKey: "review_id",
-        as: "review"
-    });
-
+  User.hasMany(Review, { foreignKey: "user_id", as: "reviews", onDelete: "CASCADE" });
+  Review.belongsTo(User, { foreignKey: "user_id", as: "user", onDelete: "CASCADE" });
+  Article.hasMany(Review, { foreignKey: "article_id", as: "reviews", onDelete: "CASCADE" });
+  Review.belongsTo(Article, { foreignKey: "article_id", as: "article", onDelete: "CASCADE" });
+  Category.hasMany(Category, { foreignKey: "parent_category_id", as: "children", onDelete: "RESTRICT" });
+  Category.belongsTo(Category, { foreignKey: "parent_category_id", as: "parentCategory", onDelete: "RESTRICT" });
+  Category.hasMany(Article, { foreignKey: "category_id", as: "articles", onDelete: "CASCADE" });
+  Article.belongsTo(Category, { foreignKey: "category_id", as: "category", onDelete: "CASCADE" });
+  Brand.hasMany(Article, { foreignKey: "brand_id", as: "articles", onDelete: "CASCADE" });
+  Article.belongsTo(Brand, { foreignKey: "brand_id", as: "brand", onDelete: "CASCADE" });
+  Article.hasMany(ArticleStore, { foreignKey: "article_id", as: "articleStores", onDelete: "CASCADE" });
+  ArticleStore.belongsTo(Article, { foreignKey: "article_id", as: "article", onDelete: "CASCADE" });
+  Store.hasMany(ArticleStore, { foreignKey: "store_id", as: "articleStores", onDelete: "CASCADE" });
+  ArticleStore.belongsTo(Store, { foreignKey: "store_id", as: "store", onDelete: "CASCADE" });
+  Review.hasMany(Comment, { foreignKey: "review_id", as: "comments", onDelete: "CASCADE" });
+  Comment.belongsTo(Review, { foreignKey: "review_id", as: "review", onDelete: "CASCADE" });
+  User.hasMany(Comment, { foreignKey: "user_id", as: "comments", onDelete: "CASCADE" });
+  Comment.belongsTo(User, { foreignKey: "user_id", as: "user", onDelete: "CASCADE" });
+  Comment.hasMany(Comment, { foreignKey: "parent_comment_id", as: "replies", onDelete: "CASCADE" });
+  Comment.belongsTo(Comment, { foreignKey: "parent_comment_id", as: "parentComment", onDelete: "CASCADE" });
+  User.hasMany(ReviewLike, { foreignKey: "user_id", as: "reviewLikes", onDelete: "CASCADE" });
+  ReviewLike.belongsTo(User, { foreignKey: "user_id", as: "user", onDelete: "CASCADE" });
+  Review.hasMany(ReviewLike, { foreignKey: "review_id", as: "likes", onDelete: "CASCADE" });
+  ReviewLike.belongsTo(Review, { foreignKey: "review_id", as: "review", onDelete: "CASCADE" });
+  User.hasMany(CommentLike, { foreignKey: "user_id", as: "commentLikes", onDelete: "CASCADE" });
+  CommentLike.belongsTo(User, { foreignKey: "user_id", as: "user", onDelete: "CASCADE" });
+  Comment.hasMany(CommentLike, { foreignKey: "comment_id", as: "likes", onDelete: "CASCADE" });
+  CommentLike.belongsTo(Comment, { foreignKey: "comment_id", as: "comment", onDelete: "CASCADE" });
+  User.hasMany(ReviewBookmark, { foreignKey: "user_id", as: "reviewBookmarks", onDelete: "CASCADE" });
+  ReviewBookmark.belongsTo(User, { foreignKey: "user_id", as: "user", onDelete: "CASCADE" });
+  Review.hasMany(ReviewBookmark, { foreignKey: "review_id", as: "bookmarks", onDelete: "CASCADE" });
+  ReviewBookmark.belongsTo(Review, { foreignKey: "review_id", as: "review", onDelete: "CASCADE" });
+  User.hasMany(Follow, { foreignKey: "follower_id", as: "following", onDelete: "CASCADE" });
+  Follow.belongsTo(User, { foreignKey: "follower_id", as: "follower", onDelete: "CASCADE" });
+  User.hasMany(Follow, { foreignKey: "followed_id", as: "followers", onDelete: "CASCADE" });
+  Follow.belongsTo(User, { foreignKey: "followed_id", as: "followed", onDelete: "CASCADE" });
+  User.hasMany(Notification, { foreignKey: "user_id", as: "notifications", onDelete: "CASCADE" });
+  Notification.belongsTo(User, { foreignKey: "user_id", as: "user", onDelete: "CASCADE" });
+  User.hasMany(Notification, { foreignKey: "actor_user_id", as: "sentNotifications", onDelete: "CASCADE" });
+  Notification.belongsTo(User, { foreignKey: "actor_user_id", as: "actor", onDelete: "CASCADE" });
+  Review.hasMany(Notification, { foreignKey: "review_id", as: "notifications", onDelete: "SET NULL" });
+  Notification.belongsTo(Review, { foreignKey: "review_id", as: "review", onDelete: "SET NULL" });
+  Comment.hasMany(Notification, { foreignKey: "comment_id", as: "notifications", onDelete: "SET NULL" });
+  Notification.belongsTo(Comment, { foreignKey: "comment_id", as: "comment", onDelete: "SET NULL" });
 }

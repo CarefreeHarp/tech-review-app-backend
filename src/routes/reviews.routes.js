@@ -1,15 +1,19 @@
 import { Router } from "express";
 import {
   createReview,
+  getReviews,
+  getReviewById,
   deleteReview,
   getReviewsByArticle,
   getReviewsByUser,
   updateReview,
-} from "../controllers/reviews.controller.js";
+} from "../controller/reviews.controller.js";
 
 const router = Router();
 
-router.post("/users/:userId/articles/:articleId/reviews", createReview);
+router.get("/reviews", getReviews);
+router.get("/reviews/:id", getReviewById);
+router.post("/reviews", createReview);
 router.get("/articles/:articleId/reviews", getReviewsByArticle);
 router.get("/users/:userId/reviews", getReviewsByUser);
 router.put("/reviews/:id", updateReview);

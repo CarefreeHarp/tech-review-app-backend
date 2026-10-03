@@ -1,18 +1,32 @@
 import express from "express";
-
 import usersRoutes from "./routes/users.routes.js";
 import articleRoutes from "./routes/article.routes.js";
 import reviewsRoutes from "./routes/reviews.routes.js";
-
+import categoriesRoutes from "./routes/categories.routes.js";
+import brandsRoutes from "./routes/brands.routes.js";
+import storesRoutes from "./routes/stores.routes.js";
+import commentsRoutes from "./routes/comments.routes.js";
+import reviewLikesRoutes from "./routes/reviewLikes.routes.js";
+import commentLikesRoutes from "./routes/commentLikes.routes.js";
+import followsRoutes from "./routes/follows.routes.js";
+import articleStoresRoutes from "./routes/articleStores.routes.js";
+import reviewBookmarksRoutes from "./routes/reviewBookmarks.routes.js";
+import notificationsRoutes from "./routes/notifications.routes.js";
 
 const app = express();
-
 app.use(express.json());
-
-// Routes
 app.use(usersRoutes);
 app.use(articleRoutes);
 app.use(reviewsRoutes);
-
+app.use(categoriesRoutes);
+app.use(brandsRoutes);
+app.use(storesRoutes);
+app.use(commentsRoutes);
+app.use(reviewLikesRoutes);
+app.use(commentLikesRoutes);
+app.use(followsRoutes);
+app.use(articleStoresRoutes);
+app.use(reviewBookmarksRoutes);
+app.use(notificationsRoutes);
 
 export default app;

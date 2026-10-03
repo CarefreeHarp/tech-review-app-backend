@@ -1,49 +1,37 @@
 import { User } from "../models/User.js";
 
-const initialUsers = [
-  {
-    email: "juan@example.com",
-    username: "juan_sanchez",
-    biography: "Entusiasta de la tecnología y los dispositivos móviles.",
-    profile_image_url: null,
-    notifications_last_viewed_at: null,
-    is_active: true,
-  },
-  {
-    email: "alejandro@example.com",
-    username: "alejandro_nieto",
-    biography: "Aficionado al hardware y los computadores.",
-    profile_image_url: null,
-    notifications_last_viewed_at: null,
-    is_active: true,
-  },
-  {
-    email: "pablo@example.com",
-    username: "pablo_dev",
-    biography: "Interesado en software, videojuegos y tecnología.",
-    profile_image_url: null,
-    notifications_last_viewed_at: null,
-    is_active: true,
-  },
-  {
-    email: "sebastian@example.com",
-    username: "sebastian_tech",
-    biography: "Fanático de los smartphones y nuevos dispositivos.",
-    profile_image_url: null,
-    notifications_last_viewed_at: null,
-    is_active: true,
-  },
-];
+/** Inicializa Users de ejemplo después de crear sus dependencias. */
+export async function initializeUsers(options = {}) {
+  const records = [];
+  const data1 = { ...{ firebase_uid: null, email: "usuario@example.com", biography: "Entusiasta de la tecnología y las reseñas.", profile_image_url: null, notifications_last_viewed_at: null, is_active: true }, ...{ username: "usuario" } };
+  await User.build(data1).validate();
+  const [record1] = await User.findOrCreate({
+    where: { username: "usuario" },
+    defaults: { firebase_uid: null, email: "usuario@example.com", biography: "Entusiasta de la tecnología y las reseñas.", profile_image_url: null, notifications_last_viewed_at: null, is_active: true },
+    ...options,
+  });
+  records.push(record1);
 
-export async function initializeUsers() {
-  try {
-    const count = await User.count();
-    if (count === 0) {
-      await User.bulkCreate(initialUsers);
-      console.log("Initial users loaded");
-    }
-  } catch (error) {
-    console.error("Error initializing users:", error);
-    throw error;
+  const data2 = { ...{ firebase_uid: null, email: "mariana@example.com", biography: "Me gustan los dispositivos de audio.", profile_image_url: null, notifications_last_viewed_at: null, is_active: true }, ...{ username: "mariana.tech" } };
+  await User.build(data2).validate();
+  const [record2] = await User.findOrCreate({
+    where: { username: "mariana.tech" },
+    defaults: { firebase_uid: null, email: "mariana@example.com", biography: "Me gustan los dispositivos de audio.", profile_image_url: null, notifications_last_viewed_at: null, is_active: true },
+    ...options,
+  });
+  records.push(record2);
+
+  const data3 = { ...{ firebase_uid: null, email: "camila@example.com", biography: "Comparto experiencias con celulares y computadores.", profile_image_url: null, notifications_last_viewed_at: null, is_active: true }, ...{ username: "camila.audio" } };
+  await User.build(data3).validate();
+  const [record3] = await User.findOrCreate({
+    where: { username: "camila.audio" },
+    defaults: { firebase_uid: null, email: "camila@example.com", biography: "Comparto experiencias con celulares y computadores.", profile_image_url: null, notifications_last_viewed_at: null, is_active: true },
+    ...options,
+  });
+  records.push(record3);
+
+  for (const record of records) {
+    await record.validate();
   }
+  return records;
 }

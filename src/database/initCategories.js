@@ -39,6 +39,19 @@ export async function initializeCategories(options = {}) {
   });
   records.push(record3);
 
+  for (const data of [
+    { name: "Computadores", description: "Equipos de escritorio y portátiles.", parent_category_id: null },
+    { name: "Videojuegos", description: "Videojuegos y objetos de sus mundos virtuales.", parent_category_id: null },
+  ]) {
+    await Category.build(data).validate();
+    const [record] = await Category.findOrCreate({
+      where: { name: data.name },
+      defaults: { description: data.description, parent_category_id: data.parent_category_id },
+      ...options,
+    });
+    records.push(record);
+  }
+
   for (const record of records) {
     await record.validate();
     if (record.parent_category_id != null && !await Category.findByPk(record.parent_category_id, options)) {

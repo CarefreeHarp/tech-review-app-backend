@@ -1,9 +1,14 @@
+import { Op } from "sequelize";
+
 /** Sustituye solo la persistencia para probar Sequelize y Express sin tocar PostgreSQL. */
 export function installMemoryStore(sequelize) {
   const tables = new Map();
   const counters = new Map();
   const originals = [];
-  const matches = (row, where = {}) => Object.entries(where).every(([key, value]) => row[key] === value);
+  const matches = (row, where = {}) => Object.entries(where).every(([key, value]) =>
+    value !== null && typeof value === 'object' && Op.ne in value
+      ? row[key] !== value[Op.ne]
+      : row[key] === value);
   function constraintError(name) { const error = new Error(name); error.name = name; return error; }
 
   async function validate(model, row, current) {

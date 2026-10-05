@@ -19,7 +19,9 @@ async function init() {
   try {
     await sequelize.authenticate();
     setupRelations();
-    await sequelize.sync({ force: false });
+    // El borrado solo se activa con la opción explícita de make dev-reset.
+    const resetDatabase = process.argv.includes("--reset-db");
+    await sequelize.sync({ force: resetDatabase });
 
     // La transacción evita dejar una carga parcial si falla cualquier entidad.
     await sequelize.transaction(async (transaction) => {

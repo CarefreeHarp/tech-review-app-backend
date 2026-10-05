@@ -13,7 +13,16 @@ npm run dev
 
 Configura la conexión en `src/database/database.js`. El proyecto todavía no carga un archivo `.env`. El servidor escucha en `http://localhost:3000`.
 
-El arranque configura las asociaciones, ejecuta `sequelize.sync({ force: false })` e inicializa los ejemplos en una transacción. Esta sincronización crea tablas faltantes, pero **no migra las tablas del esquema anterior**: `articles.category_id` y `brand_id` ahora son enteros con claves foráneas, `specifications` es JSON y `review_likes.user_id` es obligatorio. Para probar este esquema utiliza una base de desarrollo vacía; una base existente necesita una migración explícita. El arranque no borra tablas ni registros existentes.
+Puedes elegir el modo de arranque desde el Makefile:
+
+| Comando | Comportamiento |
+|---|---|
+| `make` o `make dev` | Conserva los registros, inicializa los ejemplos faltantes y ejecuta nodemon. |
+| `make dev-reset` | Elimina y recrea las tablas de los modelos de Sequelize, carga los ejemplos de los `init` y arranca el servidor. |
+
+**`make dev-reset` borra los datos existentes de las tablas de la aplicación en la base configurada en `src/database/database.js`. Úsalo únicamente con una base de desarrollo.** Ejecuta `node src/index.js --reset-db` sin nodemon para que un cambio de código no vuelva a borrar los datos automáticamente. El borrado ocurre al arrancar; detener el backend no elimina registros.
+
+El arranque normal configura las asociaciones, ejecuta `sequelize.sync({ force: false })` e inicializa los ejemplos en una transacción. Esta sincronización crea tablas faltantes, pero **no migra las tablas del esquema anterior**: `articles.category_id` y `brand_id` ahora son enteros con claves foráneas, `specifications` es JSON y `review_likes.user_id` es obligatorio. Para probar este esquema utiliza una base de desarrollo vacía o `make dev-reset`; una base cuyos datos quieras conservar necesita una migración explícita. El arranque normal no borra tablas ni registros existentes.
 
 ## Estructura
 

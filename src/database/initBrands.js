@@ -21,6 +21,13 @@ export async function initializeBrands(options = {}) {
   });
   records.push(record2);
 
+  // Las imágenes de hardware no identifican un fabricante concreto.
+  for (const name of ["Personalizado", "Genérica", "Epic Games"]) {
+    await Brand.build({ name }).validate();
+    const [record] = await Brand.findOrCreate({ where: { name }, defaults: {}, ...options });
+    records.push(record);
+  }
+
   for (const record of records) {
     await record.validate();
   }

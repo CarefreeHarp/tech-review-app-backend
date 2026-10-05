@@ -186,3 +186,138 @@ test('PUT no permite referencias inexistentes ni IDs o columnas ajenas', async (
   assert.equal((await call({ rating: 3 })).status, 200);
   assert.equal((await sequelize.models.reviews.findByPk(1)).rating, 3);
 });
+
+test('Las reseñas corresponden a las imágenes y tienen dos likes y tres hilos completos', async () => {
+  store.reset();
+  const records = await seed();
+  assert.equal(records.reviewLikes.length, 12);
+  assert.equal(records.comments.length, 36);
+  const commentLikeCounts = records.comments.map(comment => {
+    const likes = records.commentLikes.filter(like => like.comment_id === comment.id);
+    assert.ok(likes.length >= 1 && likes.length <= 2);
+    assert.equal(new Set(likes.map(like => like.user_id)).size, likes.length);
+    assert.ok(likes.every(like => like.user_id !== comment.user_id));
+    return likes.length;
+  });
+  assert.equal(commentLikeCounts.filter(count => count === 1).length, 30);
+  assert.equal(commentLikeCounts.filter(count => count === 2).length, 6);
+
+  for (const review of records.reviews) {
+    const article = records.articles.find(article => article.id === review.article_id);
+    const topic = { device_01: /PC|torre/, device_00: /audífonos/i, device_09: /grieta.*Fortnite/i }[article.image_url];
+    assert.match(review.body, topic);
+    assert.match(review.title, topic);
+    for (const comment of records.comments.filter(comment => comment.review_id === review.id)) {
+      assert.match(comment.body, topic);
+    }
+    assert.ok(review.body.length >= 400);
+    assert.ok(review.title.length >= 20);
+    const likes = records.reviewLikes.filter(like => like.review_id === review.id);
+    assert.ok(likes.length >= 2);
+    assert.equal(new Set(likes.map(like => like.user_id)).size, likes.length);
+    assert.ok(likes.every(like => like.user_id !== review.user_id));
+    const roots = records.comments.filter(comment => comment.review_id === review.id && comment.parent_comment_id == null);
+    assert.equal(roots.length, 3);
+    for (const root of roots) {
+      assert.ok(records.comments.some(reply => reply.review_id === review.id && reply.parent_comment_id === root.id));
+    }
+  }
+});
+
+test('Renovar textos antiguos conserva IDs, calificaciones, productos y relaciones sin duplicados', async () => {
+  store.reset(101);
+  const records = await seed();
+  const legacyTitles = ['Buen sonido', 'Buena batería', 'Muy cómodos', 'Buen parlante', 'Buena cámara', 'Práctico'];
+  const legacyComments = ['¿Son cómodos para usarlos varias horas?', 'Sí, los uso durante toda la jornada.', 'Gracias por compartir tu experiencia.', 'Me alegra que te haya servido.'];
+  const reviewIds = records.reviews.map(review => review.id);
+  const commentIds = records.comments.map(comment => comment.id);
+  const articlesBefore = JSON.stringify(store.tables.get('articles'));
+  const reviewsBefore = records.reviews.map(({ user_id, article_id, rating, is_active }) => ({ user_id, article_id, rating, is_active }));
+  store.tables.get('reviews').forEach((row, i) => { row.title = legacyTitles[i]; row.body = 'Texto anterior.'; });
+  store.tables.get('comments').slice(0, 4).forEach((row, i) => { row.body = legacyComments[i]; });
+  const renewed = await seed();
+  assert.deepEqual(renewed.reviews.map(review => review.id), reviewIds);
+  assert.deepEqual(renewed.comments.map(comment => comment.id), commentIds);
+  assert.deepEqual(renewed.reviews.map(({ user_id, article_id, rating, is_active }) => ({ user_id, article_id, rating, is_active })), reviewsBefore);
+  assert.equal(JSON.stringify(store.tables.get('articles')), articlesBefore);
+  assert.equal(await sequelize.models.reviews.count(), 6);
+  assert.equal(await sequelize.models.comments.count(), 36);
+  assert.ok(renewed.reviews.every(review => review.body.length >= 400));
+  const previousTitles = [
+    'Un PC de escritorio que luce tan bien como trabaja',
+    'Audífonos cómodos para música y sesiones de estudio',
+    'Una torre con iluminación azul para mi escritorio',
+    'La grieta de Fortnite me salvó una partida',
+    'Buen sonido y una diadema cómoda para el día a día',
+    'Una grieta útil si eliges bien dónde aterrizar',
+  ];
+  store.tables.get('reviews').forEach((row, i) => { row.title = previousTitles[i]; row.body = 'Texto de la versión anterior.'; });
+  store.tables.get('comments')[0].body = '¿La torre deja suficiente espacio para ordenar los cables y limpiar los ventiladores?';
+  store.tables.get('comments')[1].body = 'Sí, pude acomodar los cables por el lateral y revisar el interior sin desmontar todo el equipo.';
+  const upgraded = await seed();
+  assert.deepEqual(upgraded.reviews.map(review => review.id), reviewIds);
+  assert.deepEqual(upgraded.comments.map(comment => comment.id), commentIds);
+  assert.deepEqual(upgraded.reviews.map(review => review.title), renewed.reviews.map(review => review.title));
+  assert.ok(upgraded.comments.every(comment => /PC|torre|audífonos|grieta/i.test(comment.body)));
+  assert.equal(await sequelize.models.reviews.count(), 6);
+  assert.equal(await sequelize.models.comments.count(), 36);
+  store.tables.get('reviews')[0].body = 'Contenido obsoleto con el título actual.';
+  store.tables.get('comments')[0].body = upgraded.comments[0].body;
+  const rerun = await seed();
+  assert.deepEqual(rerun.reviews.map(review => review.id), reviewIds);
+  assert.deepEqual(rerun.comments.map(comment => comment.id), commentIds);
+  assert.ok(rerun.reviews.every(review => review.body.length >= 400));
+});
+
+test('Las fichas de producto corresponden a sus fotos y renuevan los datos antiguos conservando IDs', async () => {
+  store.reset();
+  const records = await seed();
+  const expected = [
+    ['device_01', 'PC de escritorio', 'Computadores', 'Personalizado'],
+    ['device_00', 'Audífonos de diadema', 'Auriculares', 'Genérica'],
+    ['device_09', 'Grieta de Fortnite', 'Videojuegos', 'Epic Games'],
+  ];
+  for (const [image, name, category, brand] of expected) {
+    const article = records.articles.find(article => article.image_url === image);
+    assert.equal(article.name, name);
+    assert.equal(records.categories.find(item => item.id === article.category_id).name, category);
+    assert.equal(records.brands.find(item => item.id === article.brand_id).name, brand);
+    assert.ok(!['WH-1000XM5', 'Galaxy S24', 'SRS-XB100'].includes(article.model));
+  }
+  const articleIds = records.articles.map(article => article.id);
+  const reviewIds = records.reviews.map(review => review.id);
+  const reviewArticles = records.reviews.map(review => review.article_id);
+  const legacyNames = ['Auriculares', 'Teléfono', 'Parlante portátil'];
+  const legacyBrands = [records.brands[0].id, records.brands[1].id, records.brands[0].id];
+  store.tables.get('articles').forEach((row, i) => {
+    row.name = legacyNames[i];
+    row.brand_id = legacyBrands[i];
+    row.model = ['WH-1000XM5', 'Galaxy S24', 'SRS-XB100'][i];
+  });
+  const renewed = await seed();
+  assert.deepEqual(renewed.articles.map(article => article.id), articleIds);
+  assert.deepEqual(renewed.reviews.map(review => review.id), reviewIds);
+  assert.deepEqual(renewed.reviews.map(review => review.article_id), reviewArticles);
+  assert.deepEqual(renewed.articles.map(article => article.name), expected.map(item => item[1]));
+  assert.equal(await sequelize.models.articles.count(), 3);
+  assert.equal(await sequelize.models.reviews.count(), 6);
+});
+
+
+test('La búsqueda de perfiles excluye el ID solicitado sin afectar las lecturas generales', async () => {
+  store.reset();
+  await seed();
+  const all = await (await fetch(baseUrl + '/users')).json();
+  assert.deepEqual(all.map(user => user.id), [1, 2, 3]);
+  for (const excludedId of [1, 2, 3, 999]) {
+    const response = await fetch(baseUrl + '/users?excludeUserId=' + excludedId);
+    assert.equal(response.status, 200);
+    const users = await response.json();
+    assert.deepEqual(users.map(user => user.id), all.filter(user => user.id !== excludedId).map(user => user.id));
+    assert.ok(users.every(user => user.reviews.length === 2));
+  }
+  assert.equal((await fetch(baseUrl + '/users/1')).status, 200);
+  for (const value of ['0', '-1', 'abc', '1.5', '', '9007199254740992', '1&excludeUserId=2']) {
+    assert.equal((await fetch(baseUrl + '/users?excludeUserId=' + value)).status, 400, value);
+  }
+});

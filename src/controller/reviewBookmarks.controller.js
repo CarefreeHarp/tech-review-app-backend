@@ -1,9 +1,10 @@
 import { ReviewBookmark } from "../models/ReviewBookmark.js";
+import { timestampAttributes } from "./serialization.js";
 
 /** Obtiene todos los registros de ReviewBookmark. */
 export const getReviewBookmarks = async (req, res) => {
   try {
-    const records = await ReviewBookmark.findAll({ order: [["user_id", "ASC"], ["review_id", "ASC"]] });
+    const records = await ReviewBookmark.findAll({ attributes: timestampAttributes('review_bookmarks', ['created_at']), order: [["user_id", "ASC"], ["review_id", "ASC"]] });
     return res.json(records);
   } catch {
     return res.status(500).json({ message: "No pudimos cargar los registros." });
@@ -18,7 +19,7 @@ export const getReviewBookmarkById = async (req, res) => {
     return res.status(400).json({ message: "Los identificadores deben ser enteros positivos." });
   }
   try {
-    const record = await ReviewBookmark.findOne({ where: { user_id: Number(user_id), review_id: Number(review_id) } });
+    const record = await ReviewBookmark.findOne({ attributes: timestampAttributes('review_bookmarks', ['created_at']), where: { user_id: Number(user_id), review_id: Number(review_id) } });
     if (!record) {
       return res.status(404).json({ message: "No encontramos este registro." });
     }

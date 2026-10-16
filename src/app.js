@@ -12,6 +12,7 @@ import followsRoutes from "./routes/follows.routes.js";
 import articleStoresRoutes from "./routes/articleStores.routes.js";
 import reviewBookmarksRoutes from "./routes/reviewBookmarks.routes.js";
 import notificationsRoutes from "./routes/notifications.routes.js";
+import productRequestsRoutes from "./routes/productRequests.routes.js";
 
 const app = express();
 app.use(express.json());
@@ -28,5 +29,6 @@ app.use(followsRoutes);
 app.use(articleStoresRoutes);
 app.use(reviewBookmarksRoutes);
 app.use(notificationsRoutes);
+app.use(productRequestsRoutes);
 
 export default app;

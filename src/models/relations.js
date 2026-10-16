@@ -11,9 +11,13 @@ import { Follow } from "./Follow.js";
 import { ArticleStore } from "./ArticleStore.js";
 import { ReviewBookmark } from "./ReviewBookmark.js";
 import { Notification } from "./Notification.js";
+import { ProductRequest } from "./ProductRequest.js";
 
 /** Configura las relaciones del diagrama antes de sincronizar y consultar los modelos. */
 export function setupRelations() {
+  User.hasMany(ProductRequest, { foreignKey: "user_id", as: "productRequests", onDelete: "RESTRICT" });
+  ProductRequest.belongsTo(User, { foreignKey: "user_id", as: "user", onDelete: "RESTRICT" });
+
   User.hasMany(Review, { foreignKey: "user_id", as: "reviews", onDelete: "CASCADE" });
   Review.belongsTo(User, { foreignKey: "user_id", as: "user", onDelete: "CASCADE" });
   Article.hasMany(Review, { foreignKey: "article_id", as: "reviews", onDelete: "CASCADE" });

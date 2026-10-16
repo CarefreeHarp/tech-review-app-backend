@@ -23,23 +23,26 @@ async function init() {
     const resetDatabase = process.argv.includes("--reset-db");
     await sequelize.sync({ force: resetDatabase });
 
-    // La transacción evita dejar una carga parcial si falla cualquier entidad.
-    await sequelize.transaction(async (transaction) => {
-      const options = { transaction };
-      const users = await initializeUsers(options);
-      const categories = await initializeCategories(options);
-      const brands = await initializeBrands(options);
-      const stores = await initializeStores(options);
-      const articles = await initializeArticles(categories, brands, options);
-      const reviews = await initializeReviews(users, articles, options);
-      const comments = await initializeComments(users, reviews, options);
-      const reviewLikes = await initializeReviewLikes(users, reviews, options);
-      const commentLikes = await initializeCommentLikes(users, comments, options);
-      const follows = await initializeFollows(users, options);
-      const reviewBookmarks = await initializeReviewBookmarks(users, reviews, options);
-      const articleStores = await initializeArticleStores(articles, stores, options);
-      const notifications = await initializeNotifications(users, reviews, comments, options);
-    });
+    // Firestore es la fuente principal: reiniciar el servidor no debe reescribir datos migrados con ejemplos.
+    if (resetDatabase || process.argv.includes("--seed")) {
+      // La transacción evita dejar una carga parcial si falla cualquier entidad.
+      await sequelize.transaction(async (transaction) => {
+        const options = { transaction };
+        const users = await initializeUsers(options);
+        const categories = await initializeCategories(options);
+        const brands = await initializeBrands(options);
+        const stores = await initializeStores(options);
+        const articles = await initializeArticles(categories, brands, options);
+        const reviews = await initializeReviews(users, articles, options);
+        const comments = await initializeComments(users, reviews, options);
+        const reviewLikes = await initializeReviewLikes(users, reviews, options);
+        const commentLikes = await initializeCommentLikes(users, comments, options);
+        const follows = await initializeFollows(users, options);
+        const reviewBookmarks = await initializeReviewBookmarks(users, reviews, options);
+        const articleStores = await initializeArticleStores(articles, stores, options);
+        const notifications = await initializeNotifications(users, reviews, comments, options);
+      });
+    }
 
     app.listen(3000, () => console.log("Server is running on port 3000"));
   } catch (error) {

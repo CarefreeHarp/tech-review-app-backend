@@ -2,11 +2,13 @@ import { Article } from "../models/Article.js";
 import { Review } from "../models/Review.js";
 import { User } from "../models/User.js";
 
+import { timestampAttributes, reviewDetails, serializeReview } from "./serialization.js";
+
 /** Obtiene todos los registros de Review. */
 export const getReviews = async (req, res) => {
   try {
-    const records = await Review.findAll({ order: [["id", "ASC"]] });
-    return res.json(records);
+    const records = await Review.findAll({ attributes: timestampAttributes('reviews'), include: reviewDetails, order: [["id", "ASC"]] });
+    return res.json(records.map(serializeReview));
   } catch {
     return res.status(500).json({ message: "No pudimos cargar los registros." });
   }
@@ -19,11 +21,11 @@ export const getReviewById = async (req, res) => {
     return res.status(400).json({ message: "Los identificadores deben ser enteros positivos." });
   }
   try {
-    const record = await Review.findByPk(Number(id));
+    const record = await Review.findByPk(Number(id), { attributes: timestampAttributes('reviews'), include: reviewDetails });
     if (!record) {
       return res.status(404).json({ message: "No encontramos este registro." });
     }
-    return res.json(record);
+    return res.json(serializeReview(record));
   } catch {
     return res.status(500).json({ message: "No pudimos cargar el registro." });
   }
@@ -89,12 +91,13 @@ export const getReviewsByArticle = async (req, res) => {
       return res.status(404).json({ message: "No encontramos este artículo." });
     }
 
-    const reviews = await Review.findAll({
+    const reviews = await Review.findAll({ attributes: timestampAttributes('reviews'),
+      include: reviewDetails,
       where: { article_id: article.id },
       order: [["createdAt", "DESC"]],
     });
 
-    return res.json(reviews);
+    return res.json(reviews.map(serializeReview));
   } catch (error) {
     console.log("Error getting article reviews:", error);
     return res
@@ -110,12 +113,13 @@ export const getReviewsByUser = async (req, res) => {
       return res.status(404).json({ message: "No encontramos este usuario." });
     }
 
-    const reviews = await Review.findAll({
+    const reviews = await Review.findAll({ attributes: timestampAttributes('reviews'),
+      include: reviewDetails,
       where: { user_id: user.id },
       order: [["createdAt", "DESC"]],
     });
 
-    return res.json(reviews);
+    return res.json(reviews.map(serializeReview));
   } catch (error) {
     console.log("Error getting user reviews:", error);
     return res

@@ -1,9 +1,10 @@
 import { CommentLike } from "../models/CommentLike.js";
+import { timestampAttributes } from "./serialization.js";
 
 /** Obtiene todos los registros de CommentLike. */
 export const getCommentLikes = async (req, res) => {
   try {
-    const records = await CommentLike.findAll({ order: [["id", "ASC"]] });
+    const records = await CommentLike.findAll({ attributes: timestampAttributes('comment_likes', ['created_at']), order: [["id", "ASC"]] });
     return res.json(records);
   } catch {
     return res.status(500).json({ message: "No pudimos cargar los registros." });
@@ -17,7 +18,7 @@ export const getCommentLikeById = async (req, res) => {
     return res.status(400).json({ message: "Los identificadores deben ser enteros positivos." });
   }
   try {
-    const record = await CommentLike.findByPk(Number(id));
+    const record = await CommentLike.findByPk(Number(id), { attributes: timestampAttributes('comment_likes', ['created_at']) });
     if (!record) {
       return res.status(404).json({ message: "No encontramos este registro." });
     }

@@ -1,9 +1,10 @@
 import { ReviewLike } from "../models/ReviewLike.js";
+import { timestampAttributes } from "./serialization.js";
 
 /** Obtiene todos los registros de ReviewLike. */
 export const getReviewLikes = async (req, res) => {
   try {
-    const records = await ReviewLike.findAll({ order: [["id", "ASC"]] });
+    const records = await ReviewLike.findAll({ attributes: timestampAttributes('review_likes', ['created_at']), order: [["id", "ASC"]] });
     return res.json(records);
   } catch {
     return res.status(500).json({ message: "No pudimos cargar los registros." });
@@ -17,7 +18,7 @@ export const getReviewLikeById = async (req, res) => {
     return res.status(400).json({ message: "Los identificadores deben ser enteros positivos." });
   }
   try {
-    const record = await ReviewLike.findByPk(Number(id));
+    const record = await ReviewLike.findByPk(Number(id), { attributes: timestampAttributes('review_likes', ['created_at']) });
     if (!record) {
       return res.status(404).json({ message: "No encontramos este registro." });
     }

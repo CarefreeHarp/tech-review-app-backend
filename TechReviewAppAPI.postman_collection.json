@@ -26,27 +26,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -67,26 +47,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.id).to.eql(1);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -111,27 +72,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -152,26 +93,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.id).to.eql(1);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -196,27 +118,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -237,26 +139,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.id).to.eql(1);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -278,25 +161,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Todas pertenecen al artículo 1\", function () {",
-                  "    pm.response.json().forEach(review => pm.expect(review.article_id).to.eql(1));",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -318,25 +183,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Todas pertenecen al usuario 1\", function () {",
-                  "    pm.response.json().forEach(review => pm.expect(review.user_id).to.eql(1));",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -370,29 +217,7 @@
               }
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 201\", function () {",
-                  "  pm.response.to.have.status(201);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 201) {",
-                  "  const review = pm.response.json();",
-                  "  pm.test(\"Usuario, artículo y contenido enviados\", function () {",
-                  "    pm.expect(review.user_id).to.eql(1);",
-                  "    pm.expect(review.article_id).to.eql(1);",
-                  "    pm.expect(review.rating).to.eql(5);",
-                  "    pm.expect(review.body).to.eql(\"Buena experiencia con el producto.\");",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -426,19 +251,7 @@
               }
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 400\", function () {",
-                  "  pm.response.to.have.status(400);",
-                  "});"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -472,19 +285,7 @@
               }
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 400\", function () {",
-                  "  pm.response.to.have.status(400);",
-                  "});"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -518,19 +319,7 @@
               }
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 404\", function () {",
-                  "  pm.response.to.have.status(404);",
-                  "});"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -565,25 +354,7 @@
               }
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Calificación actualizada\", function () {",
-                  "    pm.expect(pm.response.json().rating).to.eql(4);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -618,19 +389,7 @@
               }
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 400\", function () {",
-                  "  pm.response.to.have.status(400);",
-                  "});"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -655,27 +414,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -696,26 +435,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.id).to.eql(1);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -740,27 +460,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -781,26 +481,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.id).to.eql(1);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -825,27 +506,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -866,26 +527,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.id).to.eql(1);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -910,27 +552,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -951,26 +573,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.id).to.eql(1);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -995,27 +598,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -1036,26 +619,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.id).to.eql(1);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -1080,27 +644,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -1121,26 +665,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.id).to.eql(1);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -1165,27 +690,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -1207,27 +712,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.follower_id).to.eql(1);",
-                  "    pm.expect(record.followed_id).to.eql(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -1252,27 +737,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -1294,27 +759,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.article_id).to.eql(1);",
-                  "    pm.expect(record.store_id).to.eql(1);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -1339,27 +784,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -1381,27 +806,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.user_id).to.eql(1);",
-                  "    pm.expect(record.review_id).to.eql(3);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -1426,27 +831,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  pm.test(\"Lista con al menos dos registros\", function () {",
-                  "    const records = pm.response.json();",
-                  "    pm.expect(records).to.be.an(\"array\");",
-                  "    pm.expect(records.length).to.be.at.least(2);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         },
         {
@@ -1467,26 +852,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 200\", function () {",
-                  "  pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "if (pm.response.code === 200) {",
-                  "  const record = pm.response.json();",
-                  "  pm.test(\"Identificadores esperados\", function () {",
-                  "    pm.expect(record.id).to.eql(1);",
-                  "  });",
-                  "}"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]
@@ -1512,19 +878,7 @@
               ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Estado HTTP 204\", function () {",
-                  "  pm.response.to.have.status(204);",
-                  "});"
-                ]
-              }
-            }
-          ],
+          "event": [],
           "response": []
         }
       ]

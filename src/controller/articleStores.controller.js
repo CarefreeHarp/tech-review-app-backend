@@ -1,10 +1,15 @@
 import { ArticleStore } from "../models/ArticleStore.js";
 
+import { Store } from "../models/Store.js";
+import { serializeArticleStore } from "./serialization.js";
+
+const include = [{ model: Store, as: "store" }];
+
 /** Obtiene todos los registros de ArticleStore. */
 export const getArticleStores = async (req, res) => {
   try {
-    const records = await ArticleStore.findAll({ order: [["article_id", "ASC"], ["store_id", "ASC"]] });
-    return res.json(records);
+    const records = await ArticleStore.findAll({ include, order: [["article_id", "ASC"], ["store_id", "ASC"]] });
+    return res.json(records.map(serializeArticleStore));
   } catch {
     return res.status(500).json({ message: "No pudimos cargar los registros." });
   }
@@ -18,11 +23,11 @@ export const getArticleStoreById = async (req, res) => {
     return res.status(400).json({ message: "Los identificadores deben ser enteros positivos." });
   }
   try {
-    const record = await ArticleStore.findOne({ where: { article_id: Number(article_id), store_id: Number(store_id) } });
+    const record = await ArticleStore.findOne({ include, where: { article_id: Number(article_id), store_id: Number(store_id) } });
     if (!record) {
       return res.status(404).json({ message: "No encontramos este registro." });
     }
-    return res.json(record);
+    return res.json(serializeArticleStore(record));
   } catch {
     return res.status(500).json({ message: "No pudimos cargar el registro." });
   }

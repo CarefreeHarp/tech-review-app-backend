@@ -1,9 +1,10 @@
 import { Notification } from "../models/Notification.js";
+import { timestampAttributes } from "./serialization.js";
 
 /** Obtiene todos los registros de Notification. */
 export const getNotifications = async (req, res) => {
   try {
-    const records = await Notification.findAll({ order: [["id", "ASC"]] });
+    const records = await Notification.findAll({ attributes: timestampAttributes('notifications', ['created_at']), order: [["id", "ASC"]] });
     return res.json(records);
   } catch {
     return res.status(500).json({ message: "No pudimos cargar los registros." });
@@ -17,7 +18,7 @@ export const getNotificationById = async (req, res) => {
     return res.status(400).json({ message: "Los identificadores deben ser enteros positivos." });
   }
   try {
-    const record = await Notification.findByPk(Number(id));
+    const record = await Notification.findByPk(Number(id), { attributes: timestampAttributes('notifications', ['created_at']) });
     if (!record) {
       return res.status(404).json({ message: "No encontramos este registro." });
     }

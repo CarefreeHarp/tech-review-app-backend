@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "test": "node --test test/*.test.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "seed:firestore": "node scripts/seedFirestore.js"
   },
   "repository": {
     "type": "git",

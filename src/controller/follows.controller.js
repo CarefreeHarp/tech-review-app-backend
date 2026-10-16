@@ -1,9 +1,10 @@
 import { Follow } from "../models/Follow.js";
+import { timestampAttributes } from "./serialization.js";
 
 /** Obtiene todos los registros de Follow. */
 export const getFollows = async (req, res) => {
   try {
-    const records = await Follow.findAll({ order: [["follower_id", "ASC"], ["followed_id", "ASC"]] });
+    const records = await Follow.findAll({ attributes: timestampAttributes('follows', ['created_at']), order: [["follower_id", "ASC"], ["followed_id", "ASC"]] });
     return res.json(records);
   } catch {
     return res.status(500).json({ message: "No pudimos cargar los registros." });
@@ -18,7 +19,7 @@ export const getFollowById = async (req, res) => {
     return res.status(400).json({ message: "Los identificadores deben ser enteros positivos." });
   }
   try {
-    const record = await Follow.findOne({ where: { follower_id: Number(follower_id), followed_id: Number(followed_id) } });
+    const record = await Follow.findOne({ attributes: timestampAttributes('follows', ['created_at']), where: { follower_id: Number(follower_id), followed_id: Number(followed_id) } });
     if (!record) {
       return res.status(404).json({ message: "No encontramos este registro." });
     }

@@ -7,6 +7,8 @@ export const ReviewLike = sequelize.define(
     id: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true },
     user_id: { type: DataTypes.INTEGER, allowNull: false, references: { model: "users", key: "id" } },
     review_id: { type: DataTypes.INTEGER, allowNull: false, references: { model: "reviews", key: "id" } },
+    // Las nuevas relaciones guardan su fecha; la migración completa las fechas de prueba ausentes.
+    created_at: { type: DataTypes.DATE, allowNull: true, defaultValue: DataTypes.NOW },
   },
   { timestamps: false, indexes: [{"unique": true, "fields": ["user_id", "review_id"]}] },
 );

@@ -30,3 +30,6 @@ temp/
 *.swo
 .DS_Store
 Thumbs.db
+
+# Grafo y cachés de Graphify: se mantienen fuera del repositorio
+/graphify-out/

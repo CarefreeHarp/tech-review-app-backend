@@ -1,0 +1,1097 @@
+{
+  "formatVersion": 1,
+  "sourceProject": "devicers-d04dd",
+  "capturedAt": "2026-10-16T17:23:32.020Z",
+  "nextIds": {
+    "users": 7,
+    "reviews": 10
+  },
+  "tables": {
+    "users": [
+      {
+        "id": 1,
+        "firebase_uid": "tZkobJBaNgMgQnizBhtTSuESh5t1",
+        "email": "prueba1@gmail.com",
+        "username": "prueba1",
+        "biography": "Mi relación más estable es con el Wi-Fi. También discutimos, pero siempre reconectamos. JAJAJA",
+        "profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FtZkobJBaNgMgQnizBhtTSuESh5t1.jpg?alt=media&token=9cd80ccc-6992-4d5e-a42a-19817607f91a",
+        "notifications_last_viewed_at": null,
+        "is_active": true,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "updated_at": "2026-10-14T00:01:27.166000Z"
+      },
+      {
+        "id": 2,
+        "firebase_uid": "XSwjrcG8GBW6g9j2lh79H1XMbPI2",
+        "email": "prueba2@gmail.com",
+        "username": "prueba2",
+        "biography": "Compro tecnología para ahorrar tiempo y luego paso tres horas configurándola :v",
+        "profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2.jpg?alt=media&token=a5f80ed2-bb97-4a6a-b9e2-95caf779fc7b",
+        "notifications_last_viewed_at": null,
+        "is_active": true,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "updated_at": "2026-10-14T00:03:40.773000Z"
+      },
+      {
+        "id": 3,
+        "firebase_uid": "RBJ2Hh73DcaEGSgGc017P2tdf4p1",
+        "email": "prueba3@gmail.com",
+        "username": "prueba3",
+        "biography": "Tengo más cables que respuestas, pero siempre encuentro cómo conectarlo todo.",
+        "profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FRBJ2Hh73DcaEGSgGc017P2tdf4p1.jpg?alt=media&token=2fc8166d-8861-47f6-b3da-5d455e659796",
+        "notifications_last_viewed_at": null,
+        "is_active": true,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "updated_at": "2026-10-13T22:16:34.445000Z"
+      },
+      {
+        "id": 4,
+        "firebase_uid": "qzV8FsWvrIRoBW3UU23If4OWcLD3",
+        "email": "prueba4@gmail.com",
+        "username": "prueba4",
+        "biography": "Experto en cerrar 47 pestañas y arrepentirme de haber cerrado una.",
+        "profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FqzV8FsWvrIRoBW3UU23If4OWcLD3.jpg?alt=media&token=ebec0f18-d593-4775-a43a-2a7cc132eb66",
+        "notifications_last_viewed_at": null,
+        "is_active": true,
+        "created_at": "2026-10-10T06:20:55.000000Z",
+        "updated_at": "2026-10-13T22:16:34.445000Z"
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "parent_category_id": null,
+        "name": "Audio",
+        "description": "Dispositivos de audio."
+      },
+      {
+        "id": 2,
+        "parent_category_id": null,
+        "name": "Celulares",
+        "description": "Dispositivos móviles."
+      },
+      {
+        "id": 3,
+        "parent_category_id": 1,
+        "name": "Auriculares",
+        "description": "Auriculares y audífonos."
+      },
+      {
+        "id": 4,
+        "parent_category_id": null,
+        "name": "Computadores",
+        "description": "Equipos de escritorio y portátiles."
+      },
+      {
+        "id": 5,
+        "parent_category_id": null,
+        "name": "Videojuegos",
+        "description": "Videojuegos y objetos de sus mundos virtuales."
+      }
+    ],
+    "brands": [
+      {
+        "id": 3,
+        "name": "Personalizado"
+      },
+      {
+        "id": 4,
+        "name": "Genérica"
+      },
+      {
+        "id": 5,
+        "name": "Epic Games"
+      }
+    ],
+    "stores": [
+      {
+        "id": 1,
+        "name": "Tienda A",
+        "website_url": "https://tienda-a.example.com"
+      },
+      {
+        "id": 2,
+        "name": "Tienda B",
+        "website_url": "https://tienda-b.example.com"
+      }
+    ],
+    "articles": [
+      {
+        "id": 1,
+        "category_id": 4,
+        "name": "PC de escritorio",
+        "model": "Torre con iluminación azul",
+        "description": "PC de escritorio con torre transparente y ventiladores con iluminación azul.",
+        "image_url": "device_01",
+        "release_date": null,
+        "specifications": {
+          "case": "Paneles transparentes",
+          "lighting": "Azul"
+        },
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "brand_id": 3
+      },
+      {
+        "id": 2,
+        "category_id": 3,
+        "name": "Audífonos de diadema",
+        "model": "Diseño circumaural negro",
+        "description": "Audífonos negros de diadema con almohadillas que rodean las orejas y controles laterales.",
+        "image_url": "device_00",
+        "release_date": null,
+        "specifications": {
+          "color": "Negro",
+          "design": "Circumaural"
+        },
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "brand_id": 4
+      },
+      {
+        "id": 3,
+        "category_id": 5,
+        "name": "Grieta de Fortnite",
+        "model": "Grieta portátil",
+        "description": "Objeto de Fortnite representado por una esfera con una grieta azul, utilizado para reposicionarse durante la partida.",
+        "image_url": "device_09",
+        "release_date": null,
+        "specifications": {
+          "game": "Fortnite",
+          "type": "Objeto de movilidad"
+        },
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "brand_id": 5
+      }
+    ],
+    "reviews": [
+      {
+        "id": 1,
+        "user_id": 1,
+        "article_id": 1,
+        "rating": 5,
+        "title": "PC de escritorio azul: cómodo para estudiar y jugar",
+        "body": "Llevo varias semanas usando este PC de escritorio para estudiar, programar y jugar después de clase. Lo que más destaca es la torre negra con paneles transparentes y varios ventiladores iluminados en azul, exactamente como se ve en la foto. Me gusta ver el interior y tener un equipo fijo con el teclado, el monitor y mis archivos siempre a mano. Para mis proyectos y tareas habituales me ha resultado cómodo trabajar aquí. Hay que reservarle espacio en el escritorio y dejar libres las entradas de aire; tampoco es un equipo para llevar de un lugar a otro. La iluminación azul luce muy bien, aunque de noche prefiero acompañarla con una luz suave en la habitación.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z"
+      },
+      {
+        "id": 2,
+        "user_id": 1,
+        "article_id": 2,
+        "rating": 4,
+        "title": "Audífonos negros de diadema para estudiar con música",
+        "body": "Estos audífonos negros de diadema son los que uso para escuchar música mientras estudio. Las copas grandes rodean las orejas y las almohadillas acolchadas hacen que pueda llevarlos durante una sesión de lectura sin tener que acomodarlos a cada rato. El diseño de la foto coincide con lo que me gusta de ellos: una diadema amplia, copas cerradas y controles en el lateral. Escucho las voces con claridad a un volumen moderado y puedo pausar sin quitarme los audífonos. Después de varias horas noto calor en las orejas, así que hago descansos. Para el escritorio me parecen prácticos; para un bolso pequeño ocupan bastante espacio.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z"
+      },
+      {
+        "id": 3,
+        "user_id": 2,
+        "article_id": 1,
+        "rating": 4,
+        "title": "Una torre transparente con ventiladores azules",
+        "body": "Elegí este PC de escritorio porque me gustó la torre con paneles transparentes y ventiladores con iluminación azul que aparece en la imagen. Ya instalado, se convirtió en el centro de mi escritorio para las clases, los proyectos y algunas partidas por la noche. Poder ver el interior me ayuda a notar cuándo se acumula polvo y toca hacer una limpieza. La luz azul resalta bastante, especialmente con la habitación oscura, y por eso prefiero usar una lámpara suave al lado del monitor. También recomiendo dejar espacio alrededor de la torre para que circule el aire. Es un equipo vistoso y cómodo para tener fijo en casa, aunque no sirve para llevarlo a clase como un portátil.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z"
+      },
+      {
+        "id": 4,
+        "user_id": 2,
+        "article_id": 3,
+        "rating": 5,
+        "title": "La grieta portátil de Fortnite salvó a mi equipo",
+        "body": "Probé la grieta portátil de Fortnite cuando la tormenta nos estaba cerrando el paso y ya no teníamos una salida cómoda. La esfera con la grieta azul de la imagen representa justo el objeto que usamos para cambiar de posición y buscar un aterrizaje más seguro. Antes de activarla avisé a mis compañeros y marcamos una zona para no terminar separados. Ese pequeño acuerdo hizo la diferencia: pudimos reagruparnos y seguir jugando con más calma. El efecto visual es llamativo, pero lo importante es mirar el entorno mientras desciendes. Si aterrizas sin pensar puedes caer junto a otro equipo. Bien utilizada me parece una herramienta divertida para escapar y replantear la partida.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z"
+      },
+      {
+        "id": 5,
+        "user_id": 3,
+        "article_id": 2,
+        "rating": 5,
+        "title": "Audífonos negros cómodos para música y trabajo",
+        "body": "He usado estos audífonos negros de diadema para escuchar álbumes completos, ver videos y acompañar mis sesiones de trabajo en casa. Las copas acolchadas que se ven en la foto rodean las orejas y la diadema se ajusta para que no queden demasiado flojos. Me gusta el diseño sobrio y poder encontrar los controles del lateral sin volver al teléfono cada vez que quiero pausar. Las voces de los videos se entienden bien a un volumen moderado y la música me ayuda a concentrarme. Después de un rato largo noto calor, así que me los quito unos minutos. Ocupan más espacio que unos audífonos pequeños, pero para tenerlos junto al computador me han resultado cómodos.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z"
+      },
+      {
+        "id": 6,
+        "user_id": 3,
+        "article_id": 3,
+        "rating": 4,
+        "title": "Grieta de Fortnite: el aterrizaje decide la jugada",
+        "body": "La grieta portátil de Fortnite, esa esfera con una fractura azul brillante que aparece en la imagen, me resulta útil cuando necesito cambiar de posición durante una partida. La he usado para salir de una zona complicada y buscar un lugar desde el que pueda seguir moviéndome. Mi primera recomendación es decidir el destino antes de activarla y avisar al equipo. En una partida me apresuré, miré poco el mapa y terminé aterrizando cerca de otros jugadores. Desde entonces observo el terreno durante el descenso y trato de reunirme con mis compañeros. El efecto visual me encanta, pero no la considero una solución automática: con un buen plan permite escapar; sin él puede dejarte en otra pelea.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z"
+      },
+      {
+        "id": 7,
+        "user_id": 1,
+        "article_id": 1,
+        "rating": 5,
+        "title": "Jeje",
+        "body": "Buenos jijij",
+        "is_active": false,
+        "created_at": "2026-10-14T00:27:01.373000Z",
+        "updated_at": "2026-10-14T00:38:33.851000Z"
+      },
+      {
+        "id": 8,
+        "user_id": 1,
+        "article_id": 3,
+        "rating": 1,
+        "title": "grieta de fortnite es inutil",
+        "body": "no me gusta nada de nda\n\nVentajas: ninguna\n\nDesventajas: todas",
+        "is_active": true,
+        "created_at": "2026-10-16T06:02:35.879000Z",
+        "updated_at": "2026-10-16T06:02:35.879000Z"
+      }
+    ],
+    "comments": [
+      {
+        "id": 1,
+        "user_id": 2,
+        "user_username": "prueba2",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿El panel transparente de este PC azul facilita ordenar los cables y revisar los ventiladores?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 1
+      },
+      {
+        "id": 2,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": 1,
+        "body": "Sí, en esta torre de escritorio puedo ver los componentes y acomodar los cables antes de cerrar el panel. Para limpiar el PC siempre lo apago y desconecto.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 1
+      },
+      {
+        "id": 3,
+        "user_id": 3,
+        "user_username": "prueba3",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Los ventiladores azules de la torre distraen cuando usas el PC de noche?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 3
+      },
+      {
+        "id": 4,
+        "user_id": 2,
+        "user_username": "prueba2",
+        "user_profile_image_url": null,
+        "parent_comment_id": 3,
+        "body": "Con la habitación oscura la iluminación azul del PC se nota bastante; prefiero encender una lámpara suave junto al monitor.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 3
+      },
+      {
+        "id": 5,
+        "user_id": 3,
+        "user_username": "prueba3",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Usas este PC de escritorio para programar mientras estás en una videollamada?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 1
+      },
+      {
+        "id": 6,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": 5,
+        "body": "Sí, para mis clases abro el editor y la llamada en este PC. Tener el monitor y el teclado siempre conectados me hace más cómoda la rutina.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 1
+      },
+      {
+        "id": 7,
+        "user_id": 2,
+        "user_username": "prueba2",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "Me gusta la torre azul con paneles transparentes. ¿Dónde pusiste el PC para que ventile bien?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 1
+      },
+      {
+        "id": 8,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": 7,
+        "body": "Puse el PC sobre el escritorio y dejé espacio libre alrededor de la torre, especialmente junto a los ventiladores y las entradas de aire.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 1
+      },
+      {
+        "id": 9,
+        "user_id": 2,
+        "user_username": "prueba2",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Las copas acolchadas de estos audífonos negros son cómodas durante una sesión larga de estudio?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 2
+      },
+      {
+        "id": 10,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": 9,
+        "body": "Las almohadillas de los audífonos me resultan cómodas, pero después de varias horas hago una pausa para descansar las orejas y evitar el calor.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 2
+      },
+      {
+        "id": 11,
+        "user_id": 3,
+        "user_username": "prueba3",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Puedes encontrar los controles laterales de los audífonos sin quitártelos?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 2
+      },
+      {
+        "id": 12,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": 11,
+        "body": "Sí, después de usarlos unos días aprendí la posición de los botones de la copa. Ahora pauso la música sin quitarme los audífonos negros.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 2
+      },
+      {
+        "id": 13,
+        "user_id": 2,
+        "user_username": "prueba2",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Llevarías estos audífonos de diadema a la universidad dentro del bolso?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 2
+      },
+      {
+        "id": 14,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": 13,
+        "body": "Los audífonos ocupan bastante espacio. Los llevaría con una funda y un bolso amplio; para salir con poco equipaje prefiero unos más pequeños.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 2
+      },
+      {
+        "id": 15,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿El panel transparente de la torre azul permite ver cuándo hay que limpiar el PC?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 3
+      },
+      {
+        "id": 16,
+        "user_id": 2,
+        "user_username": "prueba2",
+        "user_profile_image_url": null,
+        "parent_comment_id": 15,
+        "body": "Sí, a través del panel del PC veo el polvo en el interior y los ventiladores. Antes de limpiar apago y desconecto la torre.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 3
+      },
+      {
+        "id": 17,
+        "user_id": 3,
+        "user_username": "prueba3",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Te resulta cómodo tener este PC azul como equipo fijo para las clases y las partidas?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 3
+      },
+      {
+        "id": 18,
+        "user_id": 2,
+        "user_username": "prueba2",
+        "user_profile_image_url": null,
+        "parent_comment_id": 17,
+        "body": "Sí, con este PC dejo el monitor, el teclado y los demás accesorios listos en el escritorio. La torre ocupa espacio, pero no tengo que reconectarlo todo cada día.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 3
+      },
+      {
+        "id": 19,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Avisaste a tus compañeros antes de activar la grieta portátil de Fortnite?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 4
+      },
+      {
+        "id": 20,
+        "user_id": 2,
+        "user_username": "prueba2",
+        "user_profile_image_url": null,
+        "parent_comment_id": 19,
+        "body": "Sí, antes de usar la grieta avisamos por voz y marcamos una zona de aterrizaje. En Fortnite coordinar ese movimiento nos ayudó a quedar juntos.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 4
+      },
+      {
+        "id": 21,
+        "user_id": 3,
+        "user_username": "prueba3",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Guardarías la grieta de Fortnite para escapar de la tormenta o para reposicionarte en una pelea?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 4
+      },
+      {
+        "id": 22,
+        "user_id": 2,
+        "user_username": "prueba2",
+        "user_profile_image_url": null,
+        "parent_comment_id": 21,
+        "body": "En esa partida usamos la grieta para salir de la tormenta. También la reservaría para cambiar de posición en Fortnite si tenemos claro dónde aterrizar.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 4
+      },
+      {
+        "id": 23,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "La esfera azul de la grieta de Fortnite se ve genial. ¿Qué fue lo más difícil al activarla?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 4
+      },
+      {
+        "id": 24,
+        "user_id": 2,
+        "user_username": "prueba2",
+        "user_profile_image_url": null,
+        "parent_comment_id": 23,
+        "body": "Al usar la grieta lo más difícil fue elegir rápido un aterrizaje seguro. No conviene quedarse mirando la animación de Fortnite y olvidarse de los otros equipos.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 4
+      },
+      {
+        "id": 25,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿La diadema de estos audífonos negros se ajusta sin apretar demasiado?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 5
+      },
+      {
+        "id": 26,
+        "user_id": 3,
+        "user_username": "prueba3",
+        "user_profile_image_url": null,
+        "parent_comment_id": 25,
+        "body": "En mi caso pude acomodar la diadema y las copas de los audífonos para que quedaran firmes. Aun así hago descansos durante las sesiones largas.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 5
+      },
+      {
+        "id": 27,
+        "user_id": 2,
+        "user_username": "prueba2",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Cómo se escuchan las voces de los videos con estos audífonos de diadema?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 5
+      },
+      {
+        "id": 28,
+        "user_id": 3,
+        "user_username": "prueba3",
+        "user_profile_image_url": null,
+        "parent_comment_id": 27,
+        "body": "Las voces se entienden bien con los audífonos a un volumen moderado. Los uso para seguir videos mientras trabajo junto al computador.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 5
+      },
+      {
+        "id": 29,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Las almohadillas de los audífonos negros dan calor después de escuchar un álbum completo?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 5
+      },
+      {
+        "id": 30,
+        "user_id": 3,
+        "user_username": "prueba3",
+        "user_profile_image_url": null,
+        "parent_comment_id": 29,
+        "body": "Después de un rato largo noto calor en las copas de los audífonos, así que los dejo unos minutos sobre el escritorio antes de seguir con la música.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 5
+      },
+      {
+        "id": 31,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Qué cambiarías al usar la grieta de Fortnite después de aterrizar cerca de otro equipo?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 6
+      },
+      {
+        "id": 32,
+        "user_id": 3,
+        "user_username": "prueba3",
+        "user_profile_image_url": null,
+        "parent_comment_id": 31,
+        "body": "Antes de activar la grieta marcaría una zona menos concurrida. Durante el descenso en Fortnite miraría alrededor para corregir el aterrizaje y reunirme con mis compañeros.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 6
+      },
+      {
+        "id": 33,
+        "user_id": 2,
+        "user_username": "prueba2",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Aprovechas más la grieta portátil de Fortnite cuando juegas en equipo?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 6
+      },
+      {
+        "id": 34,
+        "user_id": 3,
+        "user_username": "prueba3",
+        "user_profile_image_url": null,
+        "parent_comment_id": 33,
+        "body": "Sí, con un equipo coordinado la grieta nos ayuda a movernos juntos. En Fortnite prefiero acordar el destino para que nadie aterrice solo lejos del resto.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 6
+      },
+      {
+        "id": 35,
+        "user_id": 1,
+        "user_username": "prueba1",
+        "user_profile_image_url": null,
+        "parent_comment_id": null,
+        "body": "¿Usarías la grieta de Fortnite apenas aparece un problema o la guardarías para una situación difícil?",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 6
+      },
+      {
+        "id": 36,
+        "user_id": 3,
+        "user_username": "prueba3",
+        "user_profile_image_url": null,
+        "parent_comment_id": 35,
+        "body": "Guardaría la grieta hasta tener una razón clara para movernos y un destino seguro. Activarla sin plan en Fortnite puede sacarnos de un problema y dejarnos en otra pelea.",
+        "is_active": true,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "updated_at": "2026-10-10T01:05:30.546000Z",
+        "review_id": 6
+      }
+    ],
+    "review_likes": [
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "review_id": 1,
+        "id": 1
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "review_id": 1,
+        "id": 2
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "review_id": 2,
+        "id": 3
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "review_id": 2,
+        "id": 4
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "review_id": 3,
+        "id": 5
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "review_id": 3,
+        "id": 6
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "review_id": 4,
+        "id": 7
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "review_id": 4,
+        "id": 8
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "review_id": 5,
+        "id": 9
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "review_id": 5,
+        "id": 10
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "review_id": 6,
+        "id": 11
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "review_id": 6,
+        "id": 12
+      }
+    ],
+    "comment_likes": [
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "comment_id": 1,
+        "id": 1
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 1,
+        "id": 2
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 2,
+        "id": 3
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "comment_id": 3,
+        "id": 4
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 4,
+        "id": 5
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "comment_id": 5,
+        "id": 6
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 6,
+        "id": 7
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "comment_id": 7,
+        "id": 8
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 7,
+        "id": 9
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 8,
+        "id": 10
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "comment_id": 9,
+        "id": 11
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 10,
+        "id": 12
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "comment_id": 11,
+        "id": 13
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 12,
+        "id": 14
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "comment_id": 13,
+        "id": 15
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 13,
+        "id": 16
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 14,
+        "id": 17
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 15,
+        "id": 18
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 16,
+        "id": 19
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "comment_id": 17,
+        "id": 20
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 18,
+        "id": 21
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 19,
+        "id": 22
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 19,
+        "id": 23
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 20,
+        "id": 24
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "comment_id": 21,
+        "id": 25
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 22,
+        "id": 26
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 23,
+        "id": 27
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 24,
+        "id": 28
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 25,
+        "id": 29
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 25,
+        "id": 30
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 26,
+        "id": 31
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "comment_id": 27,
+        "id": 32
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 28,
+        "id": 33
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 29,
+        "id": 34
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 30,
+        "id": 35
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 31,
+        "id": 36
+      },
+      {
+        "user_id": 3,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "comment_id": 31,
+        "id": 37
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 32,
+        "id": 38
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "comment_id": 33,
+        "id": 39
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 34,
+        "id": 40
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 35,
+        "id": 41
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-10T06:20:53.000000Z",
+        "comment_id": 36,
+        "id": 42
+      }
+    ],
+    "follows": [
+      {
+        "followed_id": 2,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "follower_id": 1
+      },
+      {
+        "followed_id": 3,
+        "created_at": "2026-10-10T01:05:30.546000Z",
+        "follower_id": 2
+      }
+    ],
+    "article_stores": [
+      {
+        "store_id": 1,
+        "name": "Tienda A",
+        "website_url": "https://tienda-a.example.com",
+        "product_url": "https://tienda-a.example.com/pc-escritorio",
+        "article_id": 1
+      },
+      {
+        "store_id": 2,
+        "name": "Tienda B",
+        "website_url": "https://tienda-b.example.com",
+        "product_url": "https://tienda-b.example.com/audifonos",
+        "article_id": 2
+      }
+    ],
+    "review_bookmarks": [
+      {
+        "review_id": 3,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "user_id": 1
+      },
+      {
+        "review_id": 1,
+        "created_at": "2026-10-10T06:20:54.000000Z",
+        "user_id": 3
+      }
+    ],
+    "notifications": [
+      {
+        "id": 1,
+        "user_id": 1,
+        "actor_user_id": 2,
+        "type": "review_like",
+        "review_id": 1,
+        "comment_id": null,
+        "is_read": false,
+        "created_at": "2026-10-10T01:05:30.546000Z"
+      },
+      {
+        "id": 2,
+        "user_id": 2,
+        "actor_user_id": 1,
+        "type": "comment_like",
+        "review_id": 1,
+        "comment_id": 1,
+        "is_read": false,
+        "created_at": "2026-10-10T01:05:30.546000Z"
+      },
+      {
+        "id": 3,
+        "user_id": 2,
+        "actor_user_id": 1,
+        "type": "follow",
+        "review_id": null,
+        "comment_id": null,
+        "is_read": false,
+        "created_at": "2026-10-10T01:05:30.546000Z"
+      }
+    ],
+    "product_requests": []
+  }
+}

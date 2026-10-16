@@ -14,6 +14,8 @@ import { initializeFollows } from "./database/initFollows.js";
 import { initializeReviewBookmarks } from "./database/initReviewBookmarks.js";
 import { initializeArticleStores } from "./database/initArticleStores.js";
 import { initializeNotifications } from "./database/initNotifications.js";
+import { initializeProductRequests } from "./database/initProductRequests.js";
+import { isDatabaseEmpty } from "./database/seedData.js";
 
 async function init() {
   try {
@@ -23,24 +25,16 @@ async function init() {
     const resetDatabase = process.argv.includes("--reset-db");
     await sequelize.sync({ force: resetDatabase });
 
-    // Firestore es la fuente principal: reiniciar el servidor no debe reescribir datos migrados con ejemplos.
-    if (resetDatabase || process.argv.includes("--seed")) {
-      // La transacción evita dejar una carga parcial si falla cualquier entidad.
-      await sequelize.transaction(async (transaction) => {
-        const options = { transaction };
-        const users = await initializeUsers(options);
-        const categories = await initializeCategories(options);
-        const brands = await initializeBrands(options);
-        const stores = await initializeStores(options);
-        const articles = await initializeArticles(categories, brands, options);
-        const reviews = await initializeReviews(users, articles, options);
-        const comments = await initializeComments(users, reviews, options);
-        const reviewLikes = await initializeReviewLikes(users, reviews, options);
-        const commentLikes = await initializeCommentLikes(users, comments, options);
-        const follows = await initializeFollows(users, options);
-        const reviewBookmarks = await initializeReviewBookmarks(users, reviews, options);
-        const articleStores = await initializeArticleStores(articles, stores, options);
-        const notifications = await initializeNotifications(users, reviews, comments, options);
+    // Una instalación nueva carga la copia incluida; reiniciar una base con datos no la sobrescribe.
+    if (resetDatabase || process.argv.includes("--seed") || await isDatabaseEmpty()) {
+      await sequelize.transaction(async transaction => {
+        const initializers = [
+          initializeUsers, initializeCategories, initializeBrands, initializeStores,
+          initializeArticles, initializeReviews, initializeComments, initializeReviewLikes,
+          initializeCommentLikes, initializeFollows, initializeReviewBookmarks,
+          initializeArticleStores, initializeNotifications, initializeProductRequests,
+        ];
+        for (const initialize of initializers) await initialize({ transaction });
       });
     }
 

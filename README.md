@@ -21,13 +21,13 @@ Puedes elegir el modo de arranque desde el Makefile:
 
 | Comando | Comportamiento |
 |---|---|
-| `make` o `make dev` | Conserva los registros y ejecuta nodemon sin reescribirlos con ejemplos. |
-| `node src/index.js --seed` | Carga explícitamente los ejemplos mediante los inicializadores. No usar después de importar datos reales de Firestore. |
-| `make dev-reset` | Elimina y recrea las tablas de los modelos de Sequelize, carga los ejemplos de los `init` y arranca el servidor. |
+| `make` o `make dev` | Carga la copia incluida si todas las tablas están vacías; conserva cualquier base con datos. |
+| `node src/index.js --seed` | Inserta los registros iniciales ausentes por su ID, sin sobrescribir los que ya existen. |
+| `make dev-reset` | Elimina y recrea las tablas de los modelos de Sequelize, carga la copia de Firestore de los `init` y arranca el servidor. |
 
 **`make dev-reset` borra los datos existentes de las tablas de la aplicación en la base configurada en `src/database/database.js`. Úsalo únicamente con una base de desarrollo.** Ejecuta `node src/index.js --reset-db` sin nodemon para que un cambio de código no vuelva a borrar los datos automáticamente. El borrado ocurre al arrancar; detener el backend no elimina registros.
 
-El arranque normal configura las asociaciones y ejecuta `sequelize.sync({ force: false })`, sin cargar ejemplos. Los inicializadores se ejecutan en una transacción únicamente con `--seed` o `--reset-db`. Así, reiniciar Express no sustituye valores importados de Firestore por los datos de demostración. Esta sincronización crea tablas faltantes, pero **no migra las tablas del esquema anterior**: `articles.category_id` y `brand_id` ahora son enteros con claves foráneas, `specifications` es JSON y `review_likes.user_id` es obligatorio. Para probar este esquema utiliza una base de desarrollo vacía o `make dev-reset`; una base cuyos datos quieras conservar necesita una migración explícita. El arranque normal no borra tablas ni registros existentes.
+El arranque normal configura las asociaciones y ejecuta `sequelize.sync({ force: false })`. Si las 14 tablas están vacías, ejecuta los inicializadores en una transacción. Si alguna tabla contiene registros, conserva la base tal como está. `--seed` permite añadir IDs iniciales ausentes y `--reset-db` recrea expresamente las tablas antes de cargar la copia. Reiniciar Express no restaura registros eliminados ni sustituye cambios del usuario. Esta sincronización crea tablas faltantes, pero **no migra las tablas del esquema anterior**: `articles.category_id` y `brand_id` ahora son enteros con claves foráneas, `specifications` es JSON y `review_likes.user_id` es obligatorio. Para probar este esquema utiliza una base de desarrollo vacía o `make dev-reset`; una base cuyos datos quieras conservar necesita una migración explícita. El arranque normal no borra tablas ni registros existentes.
 
 ## Estructura
 
@@ -140,57 +140,45 @@ node scripts/migrateFirestoreV9.js --verify --service-account /ruta/privada/cuen
 
 La herramienta se ejecuta sobre el esquema plano anterior; una segunda aplicación sobre un Firestore ya migrado se rechaza. `--verify` sí funciona sobre el resultado v9.
 
-## Datos iniciales
+## Datos iniciales reproducibles
 
-### Herramienta de carga del esquema Firestore anterior
+Los 14 inicializadores utilizan `src/database/data/initialData.json`, una copia de los datos de Firestore capturada el 16 de octubre de 2026 y transformada al esquema relacional. Incluye los UID de los perfiles, las biografías, URLs de fotos, IDs, estados, fechas originales y relaciones. No incluye contraseñas, tokens de sesión ni cuentas de servicio. No crea cuentas en Firebase Authentication ni copia los archivos de Storage: conserva sus URLs.
 
-`seedFirestore.js` corresponde al esquema plano previo al v9. No debe ejecutarse con `--apply` sobre la base migrada: recrearía colecciones y copias que ya se sustituyeron por subcolecciones. Se conserva para cargas del esquema anterior en un entorno separado.
-
-#### Copiar los init a Firestore
-
-La herramienta reutiliza los 13 inicializadores en memoria, con las validaciones de Sequelize y claves foráneas. No se conecta a PostgreSQL ni lee los registros de una base existente. Para generar una vista previa sin credenciales ni escrituras remotas:
+En una instalación nueva, configura una PostgreSQL vacía y ejecuta:
 
 ```bash
-npm run seed:firestore
+npm ci
+make dev
 ```
 
-Genera `tmp/firestore-seed.json` (ignorado por Git), con los datos, IDs de documento y campos de fecha que se completarán al crear los documentos. Es una exportación para esta herramienta, no un archivo compatible con la importación administrada de Firestore.
+El primer arranque crea las tablas y carga la copia automáticamente. No requiere Firebase Admin ni acceso a Firestore. La copia permanece fija: los cambios posteriores en Firebase no se descargan al arrancar.
 
-Para cargarlos en la base `(default)` del proyecto Devicers, utiliza una cuenta de servicio con permisos de escritura y lectura de Firestore, guardada **fuera del repositorio**:
-
-```bash
-npm run seed:firestore -- --apply --project devicers-d04dd --credentials /ruta/privada/cuenta-servicio.json
-```
-
-También admite Application Default Credentials o `GOOGLE_APPLICATION_CREDENTIALS`. La clave privada nunca se incluye en el JSON exportado. Configuración oficial: https://firebase.google.com/docs/admin/setup#initialize_the_sdk_in_non-google_environments
-
-Las colecciones conservan los nombres de los modelos (`users`, `articles`, `reviews`, `comments`, `categories`, `brands`, `stores`, `review_likes`, `comment_likes`, `follows`, `review_bookmarks`, `notifications`). No se exporta `article_stores`: cada artículo contiene un array `stores` con los campos `store_id`, `store_name`, `store_website_url` y `product_url` de sus tiendas. Los documentos usan el ID numérico convertido a texto; las claves compuestas se unen con `_`, por ejemplo `follows/1_2`. Los campos de referencia siguen siendo IDs numéricos. Estos IDs son deterministas para una carga nueva de los init; no representan necesariamente los IDs de una PostgreSQL que ya tenga datos.
-
-La carga completa usa una transacción (hasta 400 documentos), genera las fechas administradas de creación/actualización y verifica después los datos persistidos. Repetirla omite documentos cuyo contenido inicial ya coincide, conservando sus fechas y campos adicionales. Si un documento destino tiene datos distintos, la transacción aborta sin sobrescribirlo ni dejar una carga parcial.
-
-Los usuarios de ejemplo son `prueba1` a `prueba4`, con IDs de 1 a 4 y correos `prueba1@gmail.com` a `prueba4@gmail.com`. Mantienen `firebase_uid: null` y foto nula en los init: la herramienta no crea cuentas en Firebase Authentication ni modifica cuentas existentes. Las imágenes de artículos como `device_01` conservan sus nombres de recursos Android; no se suben archivos a Storage. Esta carga tampoco cambia todavía la fuente de datos de la app ni la API.
-
-Cada inicializador devuelve los registros reutilizados o creados. Los siguientes reciben esos registros para enlazar sus IDs reales; no dependen de IDs consecutivos. `findOrCreate` permite volver a ejecutar la carga sin duplicar los ejemplos.
-
-Orden de inserción: usuarios → categorías (raíces antes que hijas) → marcas → tiendas → artículos → reseñas → comentarios (padres antes que respuestas) → likes de reseñas → likes de comentarios → seguidores → reseñas guardadas → artículos en tiendas → notificaciones.
-
-| Entidad | Registros de ejemplo |
+| Tabla | Registros incluidos |
 |---|---:|
-| Usuarios | 4 |
-| Categorías | 5 |
-| Marcas | 5 |
-| Tiendas | 2 |
-| Artículos | 3 |
-| Reseñas | 6, dos por usuario |
-| Comentarios | 36, incluidos 18 comentarios raíz y sus 18 respuestas |
-| Likes de reseñas | 18 |
-| Likes de comentarios | 42 |
-| Seguidores | 2 |
-| Reseñas guardadas | 2 |
-| Artículos en tiendas | 2 |
-| Notificaciones | 3 |
+| users | 4 |
+| categories | 5 |
+| brands | 3 |
+| stores | 2 |
+| articles | 3 |
+| reviews | 8 |
+| comments | 36 |
+| review_likes | 12 |
+| comment_likes | 42 |
+| follows | 2 |
+| review_bookmarks | 2 |
+| article_stores | 2 |
+| notifications | 3 |
+| product_requests | 0 |
 
-Los likes tienen autores concretos. Las parejas usuario–reseña y usuario–comentario son únicas; seguidores, guardados y artículos en tiendas tienen claves primarias compuestas. Los ejemplos se validan antes de insertarse: referencias existentes, respuestas en el mismo hilo, seguimiento entre usuarios distintos y notificaciones compatibles con sus destinatarios. Las calificaciones admiten enteros entre 1 y 5. `firebase_uid` e imágenes permanecen nulos en los ejemplos; las tiendas usan URLs ficticias de `example.com`.
+Las reseñas incluyen los registros inactivos. Las solicitudes de producto están contempladas por su inicializador, aunque no había documentos de esa colección en la captura.
+
+Los nombres de marca de Firestore se representan mediante `brands` y `articles.brand_id` en SQL. Las subcolecciones se representan con sus tablas y claves foráneas; `follows` y `followers` generan una sola relación SQL. Los IDs adicionales que solo existen en SQL se conservan del conjunto migrado.
+
+Los padres de categorías y comentarios se insertan antes de sus hijos. Los inicializadores validan los modelos e insertan con sus claves originales; una repetición omite los IDs existentes sin modificar sus datos. Una colisión de otra clave única se comunica como error y revierte la carga. Las fechas se envían directamente como texto SQL para conservar microsegundos. Las secuencias avanzan sin retroceder y respetan los siguientes IDs de usuarios y reseñas capturados en Firestore.
+
+`make dev-reset` **borra** las tablas de la aplicación y vuelve a cargar esta copia. En una base que quieras conservar, utiliza el arranque normal o `node src/index.js --seed` para añadir únicamente IDs ausentes.
+
+Se retiró el antiguo exportador `seedFirestore.js`, que cargaba el esquema documental anterior y dependía de helpers de tests eliminados. La copia actual inicializa exclusivamente PostgreSQL; las herramientas administrativas de migración permanecen separadas del servidor.
 
 ## Consultas manuales con Postman
 

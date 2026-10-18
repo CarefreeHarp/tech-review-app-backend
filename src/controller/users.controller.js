@@ -1,11 +1,14 @@
 import { Op } from "sequelize";
 import { User } from "../models/User.js";
 import { Review } from "../models/Review.js";
+import { Follow } from "../models/Follow.js";
 import { Article } from "../models/Article.js";
 
 import { timestampAttributes, articleDetails, reviewDetails, serializeUser } from "./serialization.js";
 
 const include = [
+  { model: Follow, as: "followers", separate: true },
+  { model: Follow, as: "following", separate: true },
   { model: Review, as: "reviews", separate: true, include: [{ model: Article, as: "article", include: articleDetails }, ...reviewDetails] },
 ];
 

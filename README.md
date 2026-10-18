@@ -197,3 +197,10 @@ La autenticación sigue usando Firebase Auth. Android puede seleccionar Express 
 Estos endpoints operan con el ID del usuario y los campos del registro. El servidor Express no utiliza Firebase Admin, tokens Bearer ni cuentas de servicio. La clave Admin facilitada al agente se reserva exclusivamente para tareas administrativas ejecutadas por el agente; los scripts de inspección o migración son herramientas administrativas, no forman parte del arranque del servidor.
 
 La retirada de reseñas desde Android usa `PUT /reviews/:id` con `is_active: false`, como Firestore. El endpoint DELETE existente mantiene su comportamiento para otros consumidores.
+
+## Seguimientos y likes de comentarios
+
+- `PUT /users/:id/follow` recibe `{ "follower_id": 1, "is_following": true }` y devuelve `is_following` y `followers_count`. El estado deseado es repetible; `false` elimina la relación y su notificación de Activity.
+- `POST /reviews/:reviewId/comments/:commentId/likes/toggle` recibe `{ "user_id": 1 }` y devuelve `is_liked` y `likes_count`. El comentario debe pertenecer a esa reseña y ambos deben estar activos.
+
+Las relaciones y las notificaciones de Activity se guardan juntas en una transacción PostgreSQL. Los likes propios no generan notificación y quitar un like o un seguimiento elimina su registro de Activity. Express no utiliza FCM, Cloud Functions ni Firestore y no envía notificaciones al teléfono. Los avisos push pertenecen exclusivamente al modo Firestore de Android.

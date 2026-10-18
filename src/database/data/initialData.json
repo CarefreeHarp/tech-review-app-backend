@@ -1,10 +1,18 @@
 {
   "formatVersion": 1,
   "sourceProject": "devicers-d04dd",
-  "capturedAt": "2026-10-16T17:23:32.020Z",
+  "capturedAt": "2026-10-18T09:17:22.599Z",
   "nextIds": {
-    "users": 7,
-    "reviews": 10
+    "users": 8,
+    "categories": 6,
+    "brands": 6,
+    "stores": 3,
+    "articles": 4,
+    "reviews": 12,
+    "comments": 37,
+    "review_likes": 17,
+    "comment_likes": 43,
+    "notifications": 72
   },
   "tables": {
     "users": [
@@ -26,11 +34,11 @@
         "email": "prueba2@gmail.com",
         "username": "prueba2",
         "biography": "Compro tecnología para ahorrar tiempo y luego paso tres horas configurándola :v",
-        "profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2.jpg?alt=media&token=a5f80ed2-bb97-4a6a-b9e2-95caf779fc7b",
+        "profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "notifications_last_viewed_at": null,
         "is_active": true,
         "created_at": "2026-10-10T06:20:53.000000Z",
-        "updated_at": "2026-10-14T00:03:40.773000Z"
+        "updated_at": "2026-10-17T23:27:56.186000Z"
       },
       {
         "id": 3,
@@ -256,6 +264,17 @@
         "is_active": true,
         "created_at": "2026-10-16T06:02:35.879000Z",
         "updated_at": "2026-10-16T06:02:35.879000Z"
+      },
+      {
+        "id": 11,
+        "user_id": 3,
+        "article_id": 1,
+        "rating": 3,
+        "title": "prueba jaja xd",
+        "body": "aaaaa",
+        "is_active": true,
+        "created_at": "2026-10-18T09:15:45.926000Z",
+        "updated_at": "2026-10-18T09:15:45.926000Z"
       }
     ],
     "comments": [
@@ -263,7 +282,7 @@
         "id": 1,
         "user_id": 2,
         "user_username": "prueba2",
-        "user_profile_image_url": null,
+        "user_profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "parent_comment_id": null,
         "body": "¿El panel transparente de este PC azul facilita ordenar los cables y revisar los ventiladores?",
         "is_active": true,
@@ -299,7 +318,7 @@
         "id": 4,
         "user_id": 2,
         "user_username": "prueba2",
-        "user_profile_image_url": null,
+        "user_profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "parent_comment_id": 3,
         "body": "Con la habitación oscura la iluminación azul del PC se nota bastante; prefiero encender una lámpara suave junto al monitor.",
         "is_active": true,
@@ -335,7 +354,7 @@
         "id": 7,
         "user_id": 2,
         "user_username": "prueba2",
-        "user_profile_image_url": null,
+        "user_profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "parent_comment_id": null,
         "body": "Me gusta la torre azul con paneles transparentes. ¿Dónde pusiste el PC para que ventile bien?",
         "is_active": true,
@@ -359,7 +378,7 @@
         "id": 9,
         "user_id": 2,
         "user_username": "prueba2",
-        "user_profile_image_url": null,
+        "user_profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "parent_comment_id": null,
         "body": "¿Las copas acolchadas de estos audífonos negros son cómodas durante una sesión larga de estudio?",
         "is_active": true,
@@ -407,7 +426,7 @@
         "id": 13,
         "user_id": 2,
         "user_username": "prueba2",
-        "user_profile_image_url": null,
+        "user_profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "parent_comment_id": null,
         "body": "¿Llevarías estos audífonos de diadema a la universidad dentro del bolso?",
         "is_active": true,
@@ -443,7 +462,7 @@
         "id": 16,
         "user_id": 2,
         "user_username": "prueba2",
-        "user_profile_image_url": null,
+        "user_profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "parent_comment_id": 15,
         "body": "Sí, a través del panel del PC veo el polvo en el interior y los ventiladores. Antes de limpiar apago y desconecto la torre.",
         "is_active": true,
@@ -467,7 +486,7 @@
         "id": 18,
         "user_id": 2,
         "user_username": "prueba2",
-        "user_profile_image_url": null,
+        "user_profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "parent_comment_id": 17,
         "body": "Sí, con este PC dejo el monitor, el teclado y los demás accesorios listos en el escritorio. La torre ocupa espacio, pero no tengo que reconectarlo todo cada día.",
         "is_active": true,
@@ -491,7 +510,7 @@
         "id": 20,
         "user_id": 2,
         "user_username": "prueba2",
-        "user_profile_image_url": null,
+        "user_profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "parent_comment_id": 19,
         "body": "Sí, antes de usar la grieta avisamos por voz y marcamos una zona de aterrizaje. En Fortnite coordinar ese movimiento nos ayudó a quedar juntos.",
         "is_active": true,
@@ -515,7 +534,7 @@
         "id": 22,
         "user_id": 2,
         "user_username": "prueba2",
-        "user_profile_image_url": null,
+        "user_profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "parent_comment_id": 21,
         "body": "En esa partida usamos la grieta para salir de la tormenta. También la reservaría para cambiar de posición en Fortnite si tenemos claro dónde aterrizar.",
         "is_active": true,
@@ -539,7 +558,7 @@
         "id": 24,
         "user_id": 2,
         "user_username": "prueba2",
-        "user_profile_image_url": null,
+        "user_profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "parent_comment_id": 23,
         "body": "Al usar la grieta lo más difícil fue elegir rápido un aterrizaje seguro. No conviene quedarse mirando la animación de Fortnite y olvidarse de los otros equipos.",
         "is_active": true,
@@ -575,7 +594,7 @@
         "id": 27,
         "user_id": 2,
         "user_username": "prueba2",
-        "user_profile_image_url": null,
+        "user_profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "parent_comment_id": null,
         "body": "¿Cómo se escuchan las voces de los videos con estos audífonos de diadema?",
         "is_active": true,
@@ -647,7 +666,7 @@
         "id": 33,
         "user_id": 2,
         "user_username": "prueba2",
-        "user_profile_image_url": null,
+        "user_profile_image_url": "https://firebasestorage.googleapis.com/v0/b/devicers-d04dd.firebasestorage.app/o/profileImages%2FXSwjrcG8GBW6g9j2lh79H1XMbPI2%2F776812a5-1002-4425-a353-1c3728f6feed.jpg?alt=media&token=f35bd7b8-d8ee-4a48-87e3-61a3e67fde75",
         "parent_comment_id": null,
         "body": "¿Aprovechas más la grieta portátil de Fortnite cuando juegas en equipo?",
         "is_active": true,
@@ -694,12 +713,6 @@
     ],
     "review_likes": [
       {
-        "user_id": 2,
-        "created_at": "2026-10-10T06:20:53.000000Z",
-        "review_id": 1,
-        "id": 1
-      },
-      {
         "user_id": 3,
         "created_at": "2026-10-10T06:20:54.000000Z",
         "review_id": 1,
@@ -718,12 +731,6 @@
         "id": 4
       },
       {
-        "user_id": 1,
-        "created_at": "2026-10-10T06:20:52.000000Z",
-        "review_id": 3,
-        "id": 5
-      },
-      {
         "user_id": 3,
         "created_at": "2026-10-10T06:20:54.000000Z",
         "review_id": 3,
@@ -731,7 +738,7 @@
       },
       {
         "user_id": 1,
-        "created_at": "2026-10-10T06:20:52.000000Z",
+        "created_at": "2026-10-17T22:08:51.646000Z",
         "review_id": 4,
         "id": 7
       },
@@ -749,7 +756,7 @@
       },
       {
         "user_id": 2,
-        "created_at": "2026-10-10T06:20:53.000000Z",
+        "created_at": "2026-10-18T09:14:37.044000Z",
         "review_id": 5,
         "id": 10
       },
@@ -764,6 +771,30 @@
         "created_at": "2026-10-10T06:20:53.000000Z",
         "review_id": 6,
         "id": 12
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-17T22:02:50.355000Z",
+        "review_id": 1,
+        "id": 13
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-17T22:09:37.317000Z",
+        "review_id": 2,
+        "id": 14
+      },
+      {
+        "user_id": 1,
+        "created_at": "2026-10-17T22:10:32.420000Z",
+        "review_id": 8,
+        "id": 15
+      },
+      {
+        "user_id": 2,
+        "created_at": "2026-10-17T22:18:49.557000Z",
+        "review_id": 8,
+        "id": 16
       }
     ],
     "comment_likes": [
@@ -1020,18 +1051,7 @@
         "id": 42
       }
     ],
-    "follows": [
-      {
-        "followed_id": 2,
-        "created_at": "2026-10-10T01:05:30.546000Z",
-        "follower_id": 1
-      },
-      {
-        "followed_id": 3,
-        "created_at": "2026-10-10T01:05:30.546000Z",
-        "follower_id": 2
-      }
-    ],
+    "follows": [],
     "article_stores": [
       {
         "store_id": 1,
@@ -1050,27 +1070,17 @@
     ],
     "review_bookmarks": [
       {
-        "review_id": 3,
-        "created_at": "2026-10-10T06:20:52.000000Z",
-        "user_id": 1
-      },
-      {
         "review_id": 1,
         "created_at": "2026-10-10T06:20:54.000000Z",
         "user_id": 3
+      },
+      {
+        "review_id": 3,
+        "created_at": "2026-10-10T06:20:52.000000Z",
+        "user_id": 1
       }
     ],
     "notifications": [
-      {
-        "id": 1,
-        "user_id": 1,
-        "actor_user_id": 2,
-        "type": "review_like",
-        "review_id": 1,
-        "comment_id": null,
-        "is_read": false,
-        "created_at": "2026-10-10T01:05:30.546000Z"
-      },
       {
         "id": 2,
         "user_id": 2,
@@ -1082,14 +1092,524 @@
         "created_at": "2026-10-10T01:05:30.546000Z"
       },
       {
-        "id": 3,
+        "id": 7,
         "user_id": 2,
         "actor_user_id": 1,
-        "type": "follow",
-        "review_id": null,
+        "type": "review_like",
+        "review_id": 4,
         "comment_id": null,
         "is_read": false,
-        "created_at": "2026-10-10T01:05:30.546000Z"
+        "created_at": "2026-10-17T22:08:51.646000Z"
+      },
+      {
+        "id": 9,
+        "user_id": 1,
+        "actor_user_id": 2,
+        "type": "review_like",
+        "review_id": 8,
+        "comment_id": null,
+        "is_read": false,
+        "created_at": "2026-10-17T22:18:49.557000Z"
+      },
+      {
+        "id": 20,
+        "user_id": 2,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 1,
+        "comment_id": 1,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 21,
+        "user_id": 1,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 1,
+        "comment_id": 2,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 22,
+        "user_id": 3,
+        "actor_user_id": 1,
+        "type": "comment_like",
+        "review_id": 1,
+        "comment_id": 5,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:52.000000Z"
+      },
+      {
+        "id": 23,
+        "user_id": 1,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 1,
+        "comment_id": 6,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 24,
+        "user_id": 2,
+        "actor_user_id": 1,
+        "type": "comment_like",
+        "review_id": 1,
+        "comment_id": 7,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:52.000000Z"
+      },
+      {
+        "id": 25,
+        "user_id": 2,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 1,
+        "comment_id": 7,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 26,
+        "user_id": 1,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 1,
+        "comment_id": 8,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 27,
+        "user_id": 1,
+        "actor_user_id": 3,
+        "type": "review_like",
+        "review_id": 1,
+        "comment_id": null,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 28,
+        "user_id": 1,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 2,
+        "comment_id": 10,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 29,
+        "user_id": 3,
+        "actor_user_id": 1,
+        "type": "comment_like",
+        "review_id": 2,
+        "comment_id": 11,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:52.000000Z"
+      },
+      {
+        "id": 30,
+        "user_id": 1,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 2,
+        "comment_id": 12,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 31,
+        "user_id": 2,
+        "actor_user_id": 1,
+        "type": "comment_like",
+        "review_id": 2,
+        "comment_id": 13,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:52.000000Z"
+      },
+      {
+        "id": 32,
+        "user_id": 2,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 2,
+        "comment_id": 13,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 33,
+        "user_id": 1,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 2,
+        "comment_id": 14,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 34,
+        "user_id": 2,
+        "actor_user_id": 1,
+        "type": "comment_like",
+        "review_id": 2,
+        "comment_id": 9,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:52.000000Z"
+      },
+      {
+        "id": 35,
+        "user_id": 1,
+        "actor_user_id": 2,
+        "type": "review_like",
+        "review_id": 2,
+        "comment_id": null,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 36,
+        "user_id": 1,
+        "actor_user_id": 3,
+        "type": "review_like",
+        "review_id": 2,
+        "comment_id": null,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 37,
+        "user_id": 1,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 3,
+        "comment_id": 15,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 38,
+        "user_id": 2,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 3,
+        "comment_id": 16,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 39,
+        "user_id": 3,
+        "actor_user_id": 1,
+        "type": "comment_like",
+        "review_id": 3,
+        "comment_id": 17,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:52.000000Z"
+      },
+      {
+        "id": 40,
+        "user_id": 2,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 3,
+        "comment_id": 18,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 41,
+        "user_id": 3,
+        "actor_user_id": 1,
+        "type": "comment_like",
+        "review_id": 3,
+        "comment_id": 3,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:52.000000Z"
+      },
+      {
+        "id": 42,
+        "user_id": 2,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 3,
+        "comment_id": 4,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 43,
+        "user_id": 2,
+        "actor_user_id": 3,
+        "type": "review_like",
+        "review_id": 3,
+        "comment_id": null,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 44,
+        "user_id": 1,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 4,
+        "comment_id": 19,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 45,
+        "user_id": 1,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 4,
+        "comment_id": 19,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 46,
+        "user_id": 2,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 4,
+        "comment_id": 20,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 47,
+        "user_id": 3,
+        "actor_user_id": 1,
+        "type": "comment_like",
+        "review_id": 4,
+        "comment_id": 21,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:52.000000Z"
+      },
+      {
+        "id": 48,
+        "user_id": 2,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 4,
+        "comment_id": 22,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 49,
+        "user_id": 1,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 4,
+        "comment_id": 23,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 50,
+        "user_id": 2,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 4,
+        "comment_id": 24,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 51,
+        "user_id": 2,
+        "actor_user_id": 3,
+        "type": "review_like",
+        "review_id": 4,
+        "comment_id": null,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 52,
+        "user_id": 1,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 5,
+        "comment_id": 25,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 53,
+        "user_id": 1,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 5,
+        "comment_id": 25,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 54,
+        "user_id": 3,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 5,
+        "comment_id": 26,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 55,
+        "user_id": 2,
+        "actor_user_id": 1,
+        "type": "comment_like",
+        "review_id": 5,
+        "comment_id": 27,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:52.000000Z"
+      },
+      {
+        "id": 56,
+        "user_id": 3,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 5,
+        "comment_id": 28,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 57,
+        "user_id": 1,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 5,
+        "comment_id": 29,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 58,
+        "user_id": 3,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 5,
+        "comment_id": 30,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 59,
+        "user_id": 3,
+        "actor_user_id": 1,
+        "type": "review_like",
+        "review_id": 5,
+        "comment_id": null,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:52.000000Z"
+      },
+      {
+        "id": 60,
+        "user_id": 1,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 6,
+        "comment_id": 31,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 61,
+        "user_id": 1,
+        "actor_user_id": 3,
+        "type": "comment_like",
+        "review_id": 6,
+        "comment_id": 31,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:54.000000Z"
+      },
+      {
+        "id": 62,
+        "user_id": 3,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 6,
+        "comment_id": 32,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 63,
+        "user_id": 2,
+        "actor_user_id": 1,
+        "type": "comment_like",
+        "review_id": 6,
+        "comment_id": 33,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:52.000000Z"
+      },
+      {
+        "id": 64,
+        "user_id": 3,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 6,
+        "comment_id": 34,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 65,
+        "user_id": 1,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 6,
+        "comment_id": 35,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 66,
+        "user_id": 3,
+        "actor_user_id": 2,
+        "type": "comment_like",
+        "review_id": 6,
+        "comment_id": 36,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 67,
+        "user_id": 3,
+        "actor_user_id": 1,
+        "type": "review_like",
+        "review_id": 6,
+        "comment_id": null,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:52.000000Z"
+      },
+      {
+        "id": 68,
+        "user_id": 3,
+        "actor_user_id": 2,
+        "type": "review_like",
+        "review_id": 6,
+        "comment_id": null,
+        "is_read": false,
+        "created_at": "2026-10-10T06:20:53.000000Z"
+      },
+      {
+        "id": 71,
+        "user_id": 3,
+        "actor_user_id": 2,
+        "type": "review_like",
+        "review_id": 5,
+        "comment_id": null,
+        "is_read": false,
+        "created_at": "2026-10-18T09:14:37.044000Z"
       }
     ],
     "product_requests": []

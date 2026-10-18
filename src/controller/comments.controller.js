@@ -1,9 +1,10 @@
+import { CommentLike } from "../models/CommentLike.js";
 import { Comment } from "../models/Comment.js";
 
 import { User } from "../models/User.js";
 import { timestampAttributes, serializeComment } from "./serialization.js";
 
-const include = [{ model: User, as: "user", attributes: ["id", "username", "profile_image_url"] }];
+const include = [{ model: CommentLike, as: "likes", separate: true }, { model: User, as: "user", attributes: ["id", "username", "profile_image_url"] }];
 
 /** Obtiene todos los registros de Comment. */
 export const getComments = async (req, res) => {

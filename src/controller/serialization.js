@@ -72,6 +72,10 @@ export function serializeReview(record) {
 /** Mantiene el perfil y aplica la misma representación a cada reseña asociada. */
 export function serializeUser(record) {
   const value = plain(record);
+  value.followers_count = (value.followers ?? []).length;
+  value.follows_count = (value.following ?? []).length;
+  delete value.followers;
+  delete value.following;
   if (value.reviews) value.reviews = value.reviews.map(serializeReview);
   return value;
 }
@@ -79,6 +83,8 @@ export function serializeUser(record) {
 /** Conserva el nombre y la foto del comentario; para registros nuevos sin copia usa el perfil asociado. */
 export function serializeComment(record) {
   const value = plain(record);
+  value.likes_count = (value.likes ?? []).length;
+  delete value.likes;
   if (value.user_username == null) {
     value.user_username = value.user?.username ?? null;
     value.user_profile_image_url = value.user?.profile_image_url ?? null;

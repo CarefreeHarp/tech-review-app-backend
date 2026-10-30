@@ -84,6 +84,15 @@ Ejemplo de creación:
 }
 ```
 
+Los comentarios se publican con `POST /reviews/:id/comments`, que recibe `user_id`, `body` y `parent_comment_id` opcional (para responder a otro comentario de la misma reseña). La reseña debe estar activa y el autor debe existir. El comentario guarda una copia de `user_username` y `user_profile_image_url`, igual que el documento de Firestore. La respuesta 201 tiene el mismo formato que `GET /comments/:id`.
+
+```json
+{
+  "user_id": 1,
+  "body": "Muy útil la reseña."
+}
+```
+
 ## Solicitudes de productos y campos faltantes
 
 `product_requests` conserva el ID textual del documento y los campos `user_id`, `product_name`, `image_url`, `category`, `brand`, `release_date`, `status` y `createdAt` (columna SQL `created_at`). No guarda `firebase_uid`. El autor debe existir en `users`; `release_date` se conserva como texto para no reinterpretar el valor del formulario.

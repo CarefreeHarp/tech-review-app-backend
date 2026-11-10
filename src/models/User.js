@@ -12,6 +12,8 @@ export const User = sequelize.define(
     profile_image_url: { type: DataTypes.TEXT, allowNull: true },
     notifications_last_viewed_at: { type: DataTypes.DATE, allowNull: true },
     is_active: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
+    // La app lo marca cuando Firebase Auth confirma el correo; las cuentas sociales llegan verificadas.
+    email_verified: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
   },
   { timestamps: true, underscored: true },
 );

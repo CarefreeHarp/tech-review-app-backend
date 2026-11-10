@@ -49,12 +49,17 @@ export const getUserById = async (req, res) => {
 /** Valida únicamente los campos aceptados por el registro o la edición. */
 function validateProfilePayload(payload, creating) {
   if (!payload || typeof payload !== "object" || Array.isArray(payload)) return "Envía un objeto JSON.";
-  const fields = creating ? ["firebase_uid", "email", "username", "profile_image_url"]
-    : ["username", "biography", "profile_image_url"];
+  const fields = creating ? ["firebase_uid", "email", "username", "profile_image_url", "email_verified"]
+    : ["username", "biography", "profile_image_url", "email_verified"];
   if (Object.keys(payload).some(key => !fields.includes(key))) return "El perfil contiene campos no admitidos.";
   if (!creating && Object.keys(payload).length === 0) return "Envía al menos un campo editable.";
   for (const key of fields) {
     if (payload[key] === undefined) continue;
+    // email_verified es el único campo booleano del perfil.
+    if (key === "email_verified") {
+      if (typeof payload[key] !== "boolean") return "email_verified debe ser booleano.";
+      continue;
+    }
     if (["biography", "profile_image_url"].includes(key) && payload[key] === null) continue;
     if (typeof payload[key] !== "string") return `${key} debe ser texto.`;
     if (["firebase_uid", "email", "username"].includes(key) && !payload[key].trim()) return `${key} no puede estar vacío.`;
